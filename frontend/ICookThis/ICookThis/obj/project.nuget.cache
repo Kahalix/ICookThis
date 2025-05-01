@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "hXqLI2rUMSc=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\snipe\\Desktop\\.net\\ICookThis\\ICookThis\\ICookThis.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\snipe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.4\\microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
+    "C:\\Users\\snipe\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

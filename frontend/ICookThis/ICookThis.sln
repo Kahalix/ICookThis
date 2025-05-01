@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICookThis", "ICookThis\ICookThis.csproj", "{90B5D5A4-295F-4BD0-9312-28C8B3C431EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90B5D5A4-295F-4BD0-9312-28C8B3C431EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B5D5A4-295F-4BD0-9312-28C8B3C431EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B5D5A4-295F-4BD0-9312-28C8B3C431EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B5D5A4-295F-4BD0-9312-28C8B3C431EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FF8A8BB-01AC-4F66-AAC7-6AB394FBF978}
+	EndGlobalSection
+EndGlobal
