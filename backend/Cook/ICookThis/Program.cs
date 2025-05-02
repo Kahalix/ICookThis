@@ -1,23 +1,22 @@
+﻿using Microsoft.EntityFrameworkCore;
+using YourApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Konfiguracja DbContext z SQL Server
+builder.Services.AddDbContext<CookThisDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Automatyczne stosowanie migracji przy starcie
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
+    var db = scope.ServiceProvider.GetRequiredService<CookThisDbContext>();
+    app.Logger.LogInformation("Stosowanie migracji...");
+    db.Database.Migrate();
+    app.Logger.LogInformation("Baza danych przygotowana.");
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
+app.Logger.LogInformation("Uruchamianie aplikacji.");
+// Tutaj można dodać mapowanie kontrolerów, swagger itp.
 app.Run();
