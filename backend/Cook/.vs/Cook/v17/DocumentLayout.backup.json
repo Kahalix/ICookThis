@@ -1,7 +1,300 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\dtos\\ingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\dtos\\ingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\controllers\\ingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\controllers\\ingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\mapping\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\data\\cookthisdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\data\\cookthisdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\dtos\\newingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\dtos\\newingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\dtos\\updateingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\dtos\\updateingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\entities\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\entities\\ingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\repositories\\iingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\repositories\\iingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\repositories\\ingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\repositories\\ingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\services\\iingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\services\\iingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\ingredients\\services\\ingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\ingredients\\services\\ingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\controllers\\instructionstepscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\controllers\\instructionstepscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\controllers\\recipeingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\controllers\\recipeingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\controllers\\recipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\controllers\\stepingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\controllers\\stepingredientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\instructionsteprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\instructionsteprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\instructionstepresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\instructionstepresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\newreciperequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\newreciperequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\recipeingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\recipeingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\recipeingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\recipeingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\reciperesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\reciperesponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\stepingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\stepingredientrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\stepingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\stepingredientresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\dtos\\updatereciperequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\dtos\\updatereciperequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\entities\\dishtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\entities\\dishtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\entities\\instructionstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\entities\\instructionstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\entities\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\entities\\recipe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\entities\\recipeingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\entities\\recipeingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\entities\\stepingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\entities\\stepingredient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\iinstructionsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\iinstructionsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\instructionsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\instructionsteprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\irecipeingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\irecipeingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\ireciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\ireciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\istepingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\istepingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\recipeingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\recipeingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\reciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\reciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\repositories\\stepingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\repositories\\stepingredientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\iinstructionstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\iinstructionstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\instructionstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\instructionstepservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\irecipeingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\irecipeingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\irecipeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\irecipeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\istepingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\istepingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\recipeingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\recipeingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\recipeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\recipeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\recipes\\services\\stepingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\recipes\\services\\stepingredientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\dtos\\newreviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\dtos\\newreviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\dtos\\reviewresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\dtos\\reviewresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\dtos\\updatereviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\dtos\\updatereviewrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\entities\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\repositories\\ireviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\repositories\\ireviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\repositories\\reviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\repositories\\reviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\services\\ireviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\reviews\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\reviews\\services\\reviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\controllers\\unitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\controllers\\unitscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\dtos\\newunitrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\dtos\\newunitrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\dtos\\unitresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\dtos\\unitresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\dtos\\updateunitrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\dtos\\updateunitrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\entities\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\entities\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\entities\\unittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\entities\\unittype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\repositories\\iunitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\repositories\\iunitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\repositories\\unitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\repositories\\unitrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\services\\iunitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\services\\iunitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\modules\\units\\services\\unitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\modules\\units\\services\\unitservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\utils\\placeholderreplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\utils\\placeholderreplacer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\icookthis.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\icookthis.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\docker-compose.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\icookthis.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\icookthis.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|c:\\users\\snipe\\desktop\\.net\\backend\\cook\\icookthis\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D0BC967C-07E3-459B-9F80-E542D6E1686A}|ICookThis\\ICookThis.csproj|solutionrelative:icookthis\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +302,967 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Ingredient.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Entities\\Ingredient.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Entities\\Ingredient.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Entities\\Ingredient.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Entities\\Ingredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:55:48.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UpdateIngredientRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\UpdateIngredientRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Dtos\\UpdateIngredientRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\UpdateIngredientRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Dtos\\UpdateIngredientRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:56:48.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NewIngredientRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\NewIngredientRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Dtos\\NewIngredientRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\NewIngredientRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Dtos\\NewIngredientRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:56:33.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IngredientResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\IngredientResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Dtos\\IngredientResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Dtos\\IngredientResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Dtos\\IngredientResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:57:19.027Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IngredientsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Controllers\\IngredientsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Controllers\\IngredientsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Controllers\\IngredientsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Controllers\\IngredientsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:25:47.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AutoMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Mapping\\AutoMapperProfile.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Mapping\\AutoMapperProfile.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Mapping\\AutoMapperProfile.cs",
+              "RelativeToolTip": "ICookThis\\Mapping\\AutoMapperProfile.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T11:03:31.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CookThisDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Data\\CookThisDbContext.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Data\\CookThisDbContext.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Data\\CookThisDbContext.cs",
+              "RelativeToolTip": "ICookThis\\Data\\CookThisDbContext.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAYwAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T18:17:34.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ICookThis\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ICookThis\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-01T15:31:17.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IIngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Repositories\\IIngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Repositories\\IIngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Repositories\\IIngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Repositories\\IIngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:24:17.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Repositories\\IngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Repositories\\IngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Repositories\\IngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Repositories\\IngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:24:38.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IIngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Services\\IIngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Services\\IIngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Services\\IIngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Services\\IIngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:25:15.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Services\\IngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Ingredients\\Services\\IngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Ingredients\\Services\\IngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Ingredients\\Services\\IngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:25:28.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InstructionStepsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\InstructionStepsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Controllers\\InstructionStepsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\InstructionStepsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Controllers\\InstructionStepsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:27:46.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RecipeIngredientsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\RecipeIngredientsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Controllers\\RecipeIngredientsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\RecipeIngredientsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Controllers\\RecipeIngredientsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:23:00.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RecipesController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\RecipesController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Controllers\\RecipesController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\RecipesController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Controllers\\RecipesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:17:23.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "StepIngredientsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\StepIngredientsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Controllers\\StepIngredientsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Controllers\\StepIngredientsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Controllers\\StepIngredientsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:29:40.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "InstructionStepRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:05:04.433Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "InstructionStepResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\InstructionStepResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:05:28.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NewRecipeRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\NewRecipeRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\NewRecipeRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\NewRecipeRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\NewRecipeRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:01:31.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RecipeIngredientRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:02:56.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "RecipeIngredientResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeIngredientResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:03:18.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "RecipeResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\RecipeResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\RecipeResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:02:06.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "StepIngredientRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:04:26.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "StepIngredientResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\StepIngredientResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:04:44.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "UpdateRecipeRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\UpdateRecipeRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Dtos\\UpdateRecipeRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Dtos\\UpdateRecipeRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Dtos\\UpdateRecipeRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:01:50.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "DishType.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\DishType.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Entities\\DishType.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\DishType.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Entities\\DishType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:00:09.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "InstructionStep.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\InstructionStep.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Entities\\InstructionStep.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\InstructionStep.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Entities\\InstructionStep.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:35:55.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Recipe.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\Recipe.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Entities\\Recipe.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\Recipe.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Entities\\Recipe.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:00:35.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "RecipeIngredient.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\RecipeIngredient.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Entities\\RecipeIngredient.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\RecipeIngredient.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Entities\\RecipeIngredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:01:18.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "StepIngredient.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\StepIngredient.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Entities\\StepIngredient.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Entities\\StepIngredient.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Entities\\StepIngredient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:36:25.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IInstructionStepRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IInstructionStepRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\IInstructionStepRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IInstructionStepRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\IInstructionStepRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:26:15.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "InstructionStepRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\InstructionStepRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\InstructionStepRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\InstructionStepRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\InstructionStepRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:26:33.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IRecipeIngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IRecipeIngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\IRecipeIngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IRecipeIngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\IRecipeIngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:21:03.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IRecipeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IRecipeRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\IRecipeRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IRecipeRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\IRecipeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:10:49.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IStepIngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IStepIngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\IStepIngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\IStepIngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\IStepIngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:28:22.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "RecipeIngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\RecipeIngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\RecipeIngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\RecipeIngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\RecipeIngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:21:21.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RecipeRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\RecipeRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\RecipeRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\RecipeRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\RecipeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:11:09.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "StepIngredientRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\StepIngredientRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Repositories\\StepIngredientRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Repositories\\StepIngredientRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Repositories\\StepIngredientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:28:39.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IInstructionStepService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IInstructionStepService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\IInstructionStepService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IInstructionStepService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\IInstructionStepService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:27:00.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "InstructionStepService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\InstructionStepService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\InstructionStepService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\InstructionStepService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\InstructionStepService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:27:23.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IRecipeIngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IRecipeIngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\IRecipeIngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IRecipeIngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\IRecipeIngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:22:23.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "IRecipeService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IRecipeService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\IRecipeService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IRecipeService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\IRecipeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:12:37.194Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "IStepIngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IStepIngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\IStepIngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\IStepIngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\IStepIngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:29:09.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "RecipeIngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\RecipeIngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\RecipeIngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\RecipeIngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\RecipeIngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:22:41.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "RecipeService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\RecipeService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\RecipeService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\RecipeService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\RecipeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:13:15.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "StepIngredientService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\StepIngredientService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Recipes\\Services\\StepIngredientService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Recipes\\Services\\StepIngredientService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Recipes\\Services\\StepIngredientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:29:24.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ReviewsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Controllers\\ReviewsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Controllers\\ReviewsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Controllers\\ReviewsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Controllers\\ReviewsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:20:02.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "NewReviewRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\NewReviewRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Dtos\\NewReviewRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\NewReviewRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Dtos\\NewReviewRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:20:55.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ReviewResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\ReviewResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Dtos\\ReviewResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\ReviewResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Dtos\\ReviewResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:21:35.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "UpdateReviewRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\UpdateReviewRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Dtos\\UpdateReviewRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Dtos\\UpdateReviewRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Dtos\\UpdateReviewRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:21:18.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "Review.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Entities\\Review.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Entities\\Review.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Entities\\Review.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Entities\\Review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T16:17:22.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IReviewRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Repositories\\IReviewRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Repositories\\IReviewRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Repositories\\IReviewRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Repositories\\IReviewRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:18:19.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ReviewRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Repositories\\ReviewRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Repositories\\ReviewRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Repositories\\ReviewRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Repositories\\ReviewRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:18:38.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "IReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Services\\IReviewService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Services\\IReviewService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Services\\IReviewService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Services\\IReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:19:06.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ReviewService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Services\\ReviewService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Reviews\\Services\\ReviewService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Reviews\\Services\\ReviewService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Reviews\\Services\\ReviewService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:19:24.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "UnitsController.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Controllers\\UnitsController.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Controllers\\UnitsController.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Controllers\\UnitsController.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Controllers\\UnitsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:07:34.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "NewUnitRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\NewUnitRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Dtos\\NewUnitRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\NewUnitRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Dtos\\NewUnitRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:53:42.189Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "UnitResponse.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\UnitResponse.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Dtos\\UnitResponse.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\UnitResponse.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Dtos\\UnitResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:54:41.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "UpdateUnitRequest.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\UpdateUnitRequest.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Dtos\\UpdateUnitRequest.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Dtos\\UpdateUnitRequest.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Dtos\\UpdateUnitRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:54:20.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Entities\\Unit.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Entities\\Unit.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Entities\\Unit.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Entities\\Unit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:53:04.923Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "UnitType.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Entities\\UnitType.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Entities\\UnitType.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Entities\\UnitType.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Entities\\UnitType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:58:46.1Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "IUnitRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Repositories\\IUnitRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Repositories\\IUnitRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Repositories\\IUnitRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Repositories\\IUnitRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:00:43.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "UnitRepository.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Repositories\\UnitRepository.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Repositories\\UnitRepository.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Repositories\\UnitRepository.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Repositories\\UnitRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:01:19.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "IUnitService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Services\\IUnitService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Services\\IUnitService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Services\\IUnitService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Services\\IUnitService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:05:04.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "UnitService.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Services\\UnitService.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Modules\\Units\\Services\\UnitService.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Modules\\Units\\Services\\UnitService.cs",
+              "RelativeToolTip": "ICookThis\\Modules\\Units\\Services\\UnitService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T20:05:21.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Program.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Program.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Program.cs",
+              "RelativeToolTip": "ICookThis\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAADgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T17:11:37.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "PlaceholderReplacer.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Utils\\PlaceholderReplacer.cs",
+              "RelativeDocumentMoniker": "ICookThis\\Utils\\PlaceholderReplacer.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Utils\\PlaceholderReplacer.cs",
+              "RelativeToolTip": "ICookThis\\Utils\\PlaceholderReplacer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T11:26:44.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "ICookThis.csproj",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\ICookThis.csproj",
+              "RelativeDocumentMoniker": "ICookThis\\ICookThis.csproj",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\ICookThis.csproj",
+              "RelativeToolTip": "ICookThis\\ICookThis.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-01T15:29:48.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "docker-compose.yml",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\docker-compose.yml",
+              "RelativeDocumentMoniker": "ICookThis\\docker-compose.yml",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\docker-compose.yml",
+              "RelativeToolTip": "ICookThis\\docker-compose.yml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-05-01T17:25:14.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\appsettings.json",
+              "RelativeDocumentMoniker": "ICookThis\\appsettings.json",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\appsettings.json",
+              "RelativeToolTip": "ICookThis\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-01T17:38:36.13Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Dockerfile",
+              "RelativeDocumentMoniker": "ICookThis\\Dockerfile",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\Dockerfile",
+              "RelativeToolTip": "ICookThis\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-05-03T00:25:18.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "ICookThis.http",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\ICookThis.http",
+              "RelativeDocumentMoniker": "ICookThis\\ICookThis.http",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\ICookThis.http",
+              "RelativeToolTip": "ICookThis\\ICookThis.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-05-01T18:08:03.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "ICookThis\\WeatherForecast.cs",
+              "ToolTip": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\WeatherForecast.cs",
+              "RelativeToolTip": "ICookThis\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-01T15:21:22.518Z"
             }
           ]
         }

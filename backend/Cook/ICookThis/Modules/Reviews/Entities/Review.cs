@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace YourApp.Modules.Reviews.Entities
+namespace ICookThis.Modules.Reviews.Entities
 {
     public class Review
     {
@@ -21,6 +21,9 @@ namespace YourApp.Modules.Reviews.Entities
 
         [Range(1, 5)]
         public decimal Rating { get; set; }
+
+        [Range(1, int.MaxValue)]
+        public int PreparationTimeMinutes { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }

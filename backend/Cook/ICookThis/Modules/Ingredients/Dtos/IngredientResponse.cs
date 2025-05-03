@@ -1,4 +1,4 @@
-﻿namespace YourApp.Modules.Ingredients.Dtos
+﻿namespace ICookThis.Modules.Ingredients.Dtos
 {
     public class IngredientResponse
     {

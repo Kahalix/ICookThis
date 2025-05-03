@@ -1,4 +1,4 @@
-﻿namespace YourApp.Modules.Recipes.Entities
+﻿namespace ICookThis.Modules.Recipes.Entities
 {
     public class InstructionStep
     {
@@ -7,12 +7,12 @@
         public int RecipeId { get; set; }
 
         /// <summary>
-        /// Kolejność kroku
+        /// Step order
         /// </summary>
         public int StepOrder { get; set; }
 
         /// <summary>
-        /// Tekst z placeholderami, np. "Zagotuj {Water}."
+        /// Text with placeholders, e.g. "Boil {Water}."
         /// </summary>
         public required string TemplateText { get; set; }
     }

@@ -49,7 +49,10 @@ namespace ICookThis.Migrations
                     DefaultUnitId = table.Column<int>(type: "int", nullable: false),
                     DishType = table.Column<int>(type: "int", nullable: false),
                     Instructions = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
-                    AvgRating = table.Column<decimal>(type: "decimal(3,2)", nullable: true)
+                    AvgRating = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
+                    AvgDifficulty = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
+                    RecommendPercentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
+                    AvgPreparationTimeMinutes = table.Column<decimal>(type: "decimal(9,2)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,7 +131,8 @@ namespace ICookThis.Migrations
                     Difficulty = table.Column<int>(type: "int", nullable: false),
                     Recommend = table.Column<bool>(type: "bit", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Rating = table.Column<decimal>(type: "decimal(2,1)", precision: 2, scale: 1, nullable: false),
+                    PreparationTimeMinutes = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -150,7 +154,7 @@ namespace ICookThis.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     InstructionStepId = table.Column<int>(type: "int", nullable: false),
                     IngredientId = table.Column<int>(type: "int", nullable: false),
-                    Fraction = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Fraction = table.Column<decimal>(type: "decimal(5,4)", precision: 5, scale: 4, nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using YourApp.Modules.Recipes.Entities;
+﻿using ICookThis.Modules.Recipes.Entities;
+using System.Collections.Generic;
 
-namespace YourApp.Modules.Recipes.Dtos
+namespace ICookThis.Modules.Recipes.Dtos
 {
     public class UpdateRecipeRequest
     {
@@ -11,7 +11,7 @@ namespace YourApp.Modules.Recipes.Dtos
         public DishType? DishType { get; set; }
         public required string Instructions { get; set; }
 
-        public required List<RecipeIngredientRequest> Ingredients { get; set; }
-        public required List<InstructionStepRequest> Steps { get; set; }
+        public List<RecipeIngredientRequest> Ingredients { get; set; } = new();
+        public List<InstructionStepRequest> Steps { get; set; } = new();
     }
 }

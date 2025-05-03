@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ICookThis.Modules.Recipes.Entities;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using YourApp.Modules.Recipes.Entities;
 
-namespace YourApp.Modules.Recipes.Dtos
+namespace ICookThis.Modules.Recipes.Dtos
 {
     public class NewRecipeRequest
     {
@@ -20,10 +20,8 @@ namespace YourApp.Modules.Recipes.Dtos
 
         public required string Instructions { get; set; }
 
-        [Required]
-        public required List<RecipeIngredientRequest> Ingredients { get; set; }
+        public List<RecipeIngredientRequest> Ingredients { get; set; } = new List<RecipeIngredientRequest>();
 
-        [Required]
-        public required List<InstructionStepRequest> Steps { get; set; }
+        public List<InstructionStepRequest> Steps { get; set; } = new List<InstructionStepRequest>();
     }
 }

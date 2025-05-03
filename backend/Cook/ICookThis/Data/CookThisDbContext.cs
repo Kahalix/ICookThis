@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using YourApp.Modules.Ingredients.Entities;
-using YourApp.Modules.Recipes.Entities;
-using YourApp.Modules.Reviews.Entities;
-using YourApp.Modules.Units.Entities;
+﻿using ICookThis.Modules.Ingredients.Entities;
+using ICookThis.Modules.Recipes.Entities;
+using ICookThis.Modules.Reviews.Entities;
+using ICookThis.Modules.Units.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Diagnostics.Internal;
 
-namespace YourApp.Data
+namespace ICookThis.Data
 {
     public class CookThisDbContext : DbContext
     {
@@ -23,7 +25,9 @@ namespace YourApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Enumy jako stringi lub inty (domyślnie inty)
+            base.OnModelCreating(modelBuilder);
+
+            // Enumy jako int
             modelBuilder.Entity<Recipe>()
                 .Property(r => r.DishType)
                 .HasConversion<int>();
@@ -32,7 +36,26 @@ namespace YourApp.Data
                 .Property(u => u.Type)
                 .HasConversion<int>();
 
-            // Relacje
+            // Precyzje dla decimal
+            modelBuilder.Entity<StepIngredient>()
+                .Property(si => si.Fraction)
+                .HasPrecision(5, 4);
+
+            modelBuilder.Entity<Review>()
+                .Property(r => r.Rating)
+                .HasPrecision(2, 1);
+
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.AvgRating)
+                .HasPrecision(3, 2);
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.AvgDifficulty)
+                .HasPrecision(3, 2);
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.RecommendPercentage)
+                .HasPrecision(5, 2);
+
+            // Relacje (bez nawigacyjnych kolekcji po stronie 'one')
             modelBuilder.Entity<InstructionStep>()
                 .HasOne<Recipe>()
                 .WithMany()
@@ -81,7 +104,6 @@ namespace YourApp.Data
                 .HasForeignKey(rv => rv.RecipeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

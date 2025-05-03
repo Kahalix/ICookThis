@@ -1,9 +1,8 @@
-﻿using ICookThis.Modules.Units.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace YourApp.Modules.Units.Entities
+namespace ICookThis.Modules.Units.Entities
 {
     public class Unit
     {

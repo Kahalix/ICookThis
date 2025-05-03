@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace YourApp.Modules.Recipes.Dtos
+namespace ICookThis.Modules.Recipes.Dtos
 {
     public class InstructionStepResponse
     {
         public int StepOrder { get; set; }
 
+        public int Id { get; set; }
+
+        public int RecipeId { get; set; }
+
         /// <summary>
-        /// Tekst wygenerowany po podstawieniu przeliczonych ilości do szablonu.
+        /// Text generated after replacing the quantities in the template.
         /// </summary>
         public required string Text { get; set; }
 

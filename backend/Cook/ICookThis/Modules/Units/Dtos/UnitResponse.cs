@@ -1,7 +1,6 @@
 ﻿using ICookThis.Modules.Units.Entities;
-using YourApp.Modules.Units.Entities;
 
-namespace YourApp.Modules.Units.Dtos
+namespace ICookThis.Modules.Units.Dtos
 {
     public class UnitResponse
     {

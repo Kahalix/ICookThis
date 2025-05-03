@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace YourApp.Modules.Recipes.Entities
+namespace ICookThis.Modules.Recipes.Entities
 {
     public class RecipeIngredient
     {

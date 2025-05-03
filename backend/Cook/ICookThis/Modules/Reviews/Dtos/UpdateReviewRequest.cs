@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YourApp.Modules.Reviews.Dtos
+namespace ICookThis.Modules.Reviews.Dtos
 {
     public class UpdateReviewRequest
     {
@@ -16,5 +16,8 @@ namespace YourApp.Modules.Reviews.Dtos
 
         [Range(0, 5)]
         public decimal? Rating { get; set; }
+
+        [Range(1, int.MaxValue)]
+        public int? PreparationTimeMinutes { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace YourApp.Modules.Recipes.Dtos
+namespace ICookThis.Modules.Recipes.Dtos
 {
     public class InstructionStepRequest
     {
@@ -11,7 +11,6 @@ namespace YourApp.Modules.Recipes.Dtos
         [Required, MaxLength(1000)]
         public required string TemplateText { get; set; }
 
-        [Required]
         public List<StepIngredientRequest>? StepIngredients { get; set; }
     }
 }

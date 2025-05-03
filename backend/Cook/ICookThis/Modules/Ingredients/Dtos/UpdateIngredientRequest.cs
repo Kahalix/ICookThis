@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YourApp.Modules.Ingredients.Dtos
+namespace ICookThis.Modules.Ingredients.Dtos
 {
     public class UpdateIngredientRequest
     {

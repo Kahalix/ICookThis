@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YourApp.Modules.Recipes.Dtos
+namespace ICookThis.Modules.Recipes.Dtos
 {
     public class StepIngredientRequest
     {
