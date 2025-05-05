@@ -5,9 +5,10 @@ Food recipes and reviews web app ASP .Net Core Vue.js
 
 
 
-
+Endpoints:
 
 Create Recipe (import to Postman)
+
 curl -X POST http://localhost:5284/api/recipes \
   -H "Accept: application/json" \
   -H "Content-Type: multipart/form-data" \
@@ -29,6 +30,7 @@ curl -X POST http://localhost:5284/api/recipes \
   -F "Steps[0].StepIngredients[0].Fraction=1,0"
   
 Create InstructionStep (import to Postman)
+
 curl -X POST http://localhost:5284/api/recipes/1/instructionsteps \
   -H "Accept: application/json" \
   -H "Content-Type: multipart/form-data" \
