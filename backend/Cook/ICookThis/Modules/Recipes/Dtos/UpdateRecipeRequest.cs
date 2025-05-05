@@ -9,8 +9,9 @@ namespace ICookThis.Modules.Recipes.Dtos
         public decimal? DefaultQty { get; set; }
         public int? DefaultUnitId { get; set; }
         public DishType? DishType { get; set; }
-        public required string Instructions { get; set; }
-
+        public required string Description { get; set; }
+        public string Image{ get; set; } = "default.jpg";
+        public IFormFile? ImageFile { get; set; }
         public List<RecipeIngredientRequest> Ingredients { get; set; } = new();
         public List<InstructionStepRequest> Steps { get; set; } = new();
     }

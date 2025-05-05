@@ -22,7 +22,10 @@ namespace ICookThis.Modules.Recipes.Entities
         public DishType DishType { get; set; }
 
         [Column(TypeName = "NVARCHAR(MAX)")]
-        public required string Instructions { get; set; }
+        public required string Description { get; set; }
+
+        [MaxLength(200)]
+        public string Image { get; set; } = "default.jpg";
 
         /// <summary>
         /// Average dish rating (1–5)

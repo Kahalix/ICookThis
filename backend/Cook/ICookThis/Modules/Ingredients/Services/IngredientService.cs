@@ -4,6 +4,7 @@ using AutoMapper;
 using ICookThis.Modules.Ingredients.Dtos;
 using ICookThis.Modules.Ingredients.Entities;
 using ICookThis.Modules.Ingredients.Repositories;
+using ICookThis.Shared.Dtos;
 
 namespace ICookThis.Modules.Ingredients.Services
 {
@@ -15,6 +16,27 @@ namespace ICookThis.Modules.Ingredients.Services
         {
             _repo = repo;
             _mapper = mapper;
+        }
+        public async Task<PagedResult<IngredientResponse>> GetPagedAsync(
+            int page,
+            int pageSize,
+            string? search)
+        {
+            var (entities, total) = await _repo.GetPagedAsync(page, pageSize, search);
+
+            var dtos = entities
+                .Select(e => _mapper.Map<IngredientResponse>(e))
+                .ToList();
+
+            return new PagedResult<IngredientResponse>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = total,
+                TotalPages = (int)System.Math.Ceiling(total / (double)pageSize),
+                Search = search,
+                Items = dtos
+            };
         }
 
         public async Task<IEnumerable<IngredientResponse>> GetAllAsync()

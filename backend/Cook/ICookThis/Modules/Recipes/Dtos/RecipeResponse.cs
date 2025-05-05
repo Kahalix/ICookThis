@@ -1,6 +1,7 @@
 ﻿using ICookThis.Modules.Recipes.Entities;
 using ICookThis.Modules.Units.Dtos;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ICookThis.Modules.Recipes.Dtos
@@ -10,12 +11,10 @@ namespace ICookThis.Modules.Recipes.Dtos
         public int Id { get; set; }
         public required string Name { get; set; }
         public decimal DefaultQty { get; set; }
-
         public required UnitResponse DefaultUnit { get; set; }
-
         public DishType DishType { get; set; }
-
-        public required string Instructions { get; set; }
+        public required string Description { get; set; }
+        public string? Image { get; set; }
 
         /// <summary>
         /// Average dish rating (0–5)

@@ -37,6 +37,9 @@ namespace ICookThis.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Ingredients");
                 });
 
@@ -47,6 +50,10 @@ namespace ICookThis.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Image")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("RecipeId")
                         .HasColumnType("int");
@@ -60,7 +67,8 @@ namespace ICookThis.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
+                    b.HasIndex("RecipeId", "StepOrder")
+                        .IsUnique();
 
                     b.ToTable("InstructionSteps");
                 });
@@ -90,12 +98,17 @@ namespace ICookThis.Migrations
                     b.Property<int>("DefaultUnitId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR(MAX)");
+
                     b.Property<int>("DishType")
                         .HasColumnType("int");
 
-                    b.Property<string>("Instructions")
+                    b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR(MAX)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -110,7 +123,17 @@ namespace ICookThis.Migrations
 
                     b.HasIndex("DefaultUnitId");
 
-                    b.ToTable("Recipes");
+                    b.HasIndex("Name", "DishType")
+                        .IsUnique();
+
+                    b.ToTable("Recipes", t =>
+                        {
+                            t.HasCheckConstraint("CK_Recipe_DefaultQty_Positive", "[DefaultQty] > 0");
+
+                            t.HasCheckConstraint("CK_Recipe_DefaultQty_Range", "[DefaultQty] > 0");
+
+                            t.HasCheckConstraint("CK_Review_DishType_Range", "[DishType] >= 0 AND [DishType] <= 4");
+                        });
                 });
 
             modelBuilder.Entity("ICookThis.Modules.Recipes.Entities.RecipeIngredient", b =>
@@ -141,7 +164,10 @@ namespace ICookThis.Migrations
 
                     b.HasIndex("UnitId");
 
-                    b.ToTable("RecipeIngredients");
+                    b.ToTable("RecipeIngredients", t =>
+                        {
+                            t.HasCheckConstraint("CK_RecipeIngredient_Qty_Positive", "[Qty] > 0");
+                        });
                 });
 
             modelBuilder.Entity("ICookThis.Modules.Recipes.Entities.StepIngredient", b =>
@@ -168,7 +194,10 @@ namespace ICookThis.Migrations
 
                     b.HasIndex("InstructionStepId");
 
-                    b.ToTable("StepIngredients");
+                    b.ToTable("StepIngredients", t =>
+                        {
+                            t.HasCheckConstraint("CK_StepIngredient_Fraction_Range", "[Fraction] >= 0 AND [Fraction] <= 1");
+                        });
                 });
 
             modelBuilder.Entity("ICookThis.Modules.Reviews.Entities.Review", b =>
@@ -210,7 +239,14 @@ namespace ICookThis.Migrations
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", t =>
+                        {
+                            t.HasCheckConstraint("CK_Review_Difficulty_Range", "[Difficulty] >= 1 AND [Difficulty] <= 5");
+
+                            t.HasCheckConstraint("CK_Review_PreparationTime_Range", "[PreparationTimeMinutes] >= 1");
+
+                            t.HasCheckConstraint("CK_Review_Rating_Range", "[Rating] >= 1 AND [Rating] <= 5");
+                        });
                 });
 
             modelBuilder.Entity("ICookThis.Modules.Units.Entities.Unit", b =>
@@ -231,7 +267,13 @@ namespace ICookThis.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Units");
+                    b.HasIndex("Symbol")
+                        .IsUnique();
+
+                    b.ToTable("Units", t =>
+                        {
+                            t.HasCheckConstraint("CK_Unit_Type_Range", "[Type] >= 0 AND [Type] <= 2");
+                        });
                 });
 
             modelBuilder.Entity("ICookThis.Modules.Recipes.Entities.InstructionStep", b =>

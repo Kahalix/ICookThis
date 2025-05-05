@@ -1,6 +1,6 @@
 /backend/cook
 
 docker compose up -d             start db
-dotnet run                       start app (cmd)
-docker compose up --build        create and build
+dotnet run                       start app
+docker compose up --build        run and build
 docker compose down -v           remove

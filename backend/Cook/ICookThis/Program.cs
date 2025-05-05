@@ -9,6 +9,14 @@ using ICookThis.Modules.Recipes.Repositories;
 using ICookThis.Modules.Ingredients.Services;
 using ICookThis.Modules.Ingredients.Repositories;
 using ICookThis.Data;
+using Azure;
+
+// 0. Prepare builder options with custom WebRootPath
+var options = new WebApplicationOptions
+{
+    ContentRootPath = Directory.GetCurrentDirectory(),
+    WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")
+};
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +55,18 @@ builder.Services.AddScoped<IStepIngredientService, StepIngredientService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 
+// 6.1 Register Moderation module
+builder.Services.AddHttpClient("Moderation", client =>
+{
+    client.BaseAddress = new Uri("http://moderation:8001");
+    client.Timeout = TimeSpan.FromSeconds(5);
+});
+
+// 6.2 Register WebRoot wwwroot
+builder.WebHost
+       .UseWebRoot("wwwroot");
+
+
 // 7. OpenAPI + Controllers
 builder.Services.AddOpenApi();
 builder.Services
@@ -58,8 +78,8 @@ builder.Services
 
 var app = builder.Build();
 
-// 8. Automatyczne migracje
-const int maxAttempts = 24;
+// 8. Automatyczne migracje (dev only – usunąć EnsureDeleted w prod)
+const int maxAttempts = 12;
 for (int attempt = 1; attempt <= maxAttempts; attempt++)
 {
     try
@@ -67,6 +87,10 @@ for (int attempt = 1; attempt <= maxAttempts; attempt++)
         using var scope = app.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<CookThisDbContext>();
         app.Logger.LogInformation("Próba migracji {Attempt}/{Max}…", attempt, maxAttempts);
+
+        // usuń starą bazę i stwórz od nowa
+        //db.Database.EnsureDeleted();
+
         db.Database.Migrate();
         app.Logger.LogInformation("Migracje zakończone sukcesem.");
         break;
@@ -86,6 +110,8 @@ var dbS = scopeS.ServiceProvider.GetRequiredService<CookThisDbContext>();
 await DbSeeder.SeedAsync(dbS);
 
 // 9. Pipeline
+
+app.UseStaticFiles();
 
 app.MapOpenApi();
 

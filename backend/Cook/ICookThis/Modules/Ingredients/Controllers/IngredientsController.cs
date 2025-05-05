@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ICookThis.Modules.Ingredients.Dtos;
 using ICookThis.Modules.Ingredients.Services;
+using ICookThis.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICookThis.Modules.Ingredients.Controllers
@@ -14,7 +15,16 @@ namespace ICookThis.Modules.Ingredients.Controllers
         public IngredientsController(IIngredientService service) => _service = service;
 
         [HttpGet]
-        public Task<IEnumerable<IngredientResponse>> GetAll() => _service.GetAllAsync();
+        public Task<PagedResult<IngredientResponse>> GetAll(
+           [FromQuery] int page = 1,
+           [FromQuery] int pageSize = 10,
+           [FromQuery] string? search = null)
+        {
+            return _service.GetPagedAsync(page, pageSize, search);
+        }
+
+        //[HttpGet]
+        //public Task<IEnumerable<IngredientResponse>> GetAll() => _service.GetAllAsync();
 
         [HttpGet("{id}")]
         public async Task<ActionResult<IngredientResponse>> Get(int id)

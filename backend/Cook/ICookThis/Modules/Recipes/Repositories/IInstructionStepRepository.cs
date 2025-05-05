@@ -11,5 +11,7 @@ namespace ICookThis.Modules.Recipes.Repositories
         Task<InstructionStep> AddAsync(InstructionStep step);
         Task<InstructionStep> UpdateAsync(InstructionStep step);
         Task DeleteAsync(int id);
+        Task<IEnumerable<InstructionStep>> GetByRecipeIdsAsync(IEnumerable<int> recipeIds);
+
     }
 }

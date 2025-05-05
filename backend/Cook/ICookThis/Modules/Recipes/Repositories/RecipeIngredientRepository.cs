@@ -41,5 +41,12 @@ namespace ICookThis.Modules.Recipes.Repositories
             _db.RecipeIngredients.Remove(ri);
             await _db.SaveChangesAsync();
         }
+        
+        public async Task<IEnumerable<RecipeIngredient>> GetByRecipeIdsAsync(IEnumerable<int> recipeIds)
+        {
+            return await _db.RecipeIngredients
+                            .Where(ri => recipeIds.Contains(ri.RecipeId))
+                            .ToListAsync();
+        }
     }
 }

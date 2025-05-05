@@ -27,7 +27,7 @@ namespace ICookThis.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Enumy jako int
+            // Enums as int
             modelBuilder.Entity<Recipe>()
                 .Property(r => r.DishType)
                 .HasConversion<int>();
@@ -103,6 +103,77 @@ namespace ICookThis.Data
                 .WithMany()
                 .HasForeignKey(rv => rv.RecipeId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // 1) Unikalność nazw
+            modelBuilder.Entity<Ingredient>()
+                .HasIndex(i => i.Name)
+                .IsUnique();
+            modelBuilder.Entity<Unit>()
+                .HasIndex(u => u.Symbol)
+                .IsUnique();
+            modelBuilder.Entity<Recipe>()
+                .HasIndex(r => new { r.Name, r.DishType })
+                .IsUnique();
+
+            // 2) Check-constraints na wartości logiczne
+
+            modelBuilder.Entity<Unit>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                    "CK_Unit_Type_Range",
+                    "[Type] >= 0 AND [Type] <= 2"));
+
+            modelBuilder.Entity<Recipe>().
+                ToTable(tb => tb.HasCheckConstraint(
+                    "CK_Review_DishType_Range",
+                    "[DishType] >= 0 AND [DishType] <= 4"));
+
+            modelBuilder.Entity<Review>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                "CK_Review_Difficulty_Range",
+                "[Difficulty] >= 1 AND [Difficulty] <= 5"));
+
+            modelBuilder.Entity<Review>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                "CK_Review_PreparationTime_Range",
+                "[PreparationTimeMinutes] >= 1"));
+
+            modelBuilder.Entity<Recipe>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                "CK_Recipe_DefaultQty_Range",
+                "[DefaultQty] > 0"));
+
+            modelBuilder.Entity<RecipeIngredient>(entity =>
+            {
+                entity.ToTable(tb => tb.HasCheckConstraint(
+                    "CK_RecipeIngredient_Qty_Positive",
+                    "[Qty] > 0"));
+            });
+
+            modelBuilder.Entity<StepIngredient>(entity =>
+            {
+                entity.ToTable(tb => tb.HasCheckConstraint(
+                    "CK_StepIngredient_Fraction_Range",
+                    "[Fraction] >= 0 AND [Fraction] <= 1"));
+            });
+
+            modelBuilder.Entity<Review>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                "CK_Review_Rating_Range",
+                "[Rating] >= 1 AND [Rating] <= 5"));
+
+            modelBuilder.Entity<Recipe>(entity =>
+            {
+                entity.ToTable(tb => tb.HasCheckConstraint(
+                    "CK_Recipe_DefaultQty_Positive",
+                    "[DefaultQty] > 0"));
+            });
+
+
+
+            // 3) Unikalny StepOrder w obrębie przepisu
+            modelBuilder.Entity<InstructionStep>()
+                .HasIndex(s => new { s.RecipeId, s.StepOrder })
+                .IsUnique();
 
         }
     }

@@ -20,13 +20,15 @@ namespace ICookThis.Data.Seeders
                 {
                     RecipeId = pancakeId,
                     StepOrder = 1,
-                    TemplateText = "Mix {Flour}, {Egg} and {Milk}."
+                    TemplateText = "Mix {Flour}, {Egg} and {Milk}.",
+                    Image = "pancakestep1.jpg"
                 },
                 new InstructionStep
                 {
                     RecipeId = pancakeId,
                     StepOrder = 2,
-                    TemplateText = "Fry batter until golden."
+                    TemplateText = "Fry batter until golden.",
+                    Image = "pancakestep2.jpg"
                 },
                 new InstructionStep
                 {
@@ -38,7 +40,8 @@ namespace ICookThis.Data.Seeders
                 {
                     RecipeId = mashId,
                     StepOrder = 2,
-                    TemplateText = "Mash potatoes and season."
+                    TemplateText = "Mash potatoes and season.",
+                    Image = "mashstep2.jpg"
                 }
             );
 

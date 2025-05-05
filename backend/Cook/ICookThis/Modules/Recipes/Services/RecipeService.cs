@@ -10,6 +10,7 @@ using ICookThis.Modules.Recipes.Entities;
 using ICookThis.Modules.Recipes.Repositories;
 using ICookThis.Modules.Units.Dtos;
 using ICookThis.Modules.Units.Repositories;
+using ICookThis.Shared.Dtos;
 using ICookThis.Utils;
 
 namespace ICookThis.Modules.Recipes.Services
@@ -23,6 +24,7 @@ namespace ICookThis.Modules.Recipes.Services
         private readonly IMapper _mapper;
         private readonly IIngredientRepository _ingredientRepo;
         private readonly IUnitRepository _unitRepo;
+        private readonly IWebHostEnvironment _env;
 
         public RecipeService(
             IRecipeRepository recipeRepo,
@@ -31,7 +33,8 @@ namespace ICookThis.Modules.Recipes.Services
             IStepIngredientRepository siRepo,
             IIngredientRepository ingredientRepo,
             IUnitRepository unitRepo,
-            IMapper mapper)
+            IMapper mapper,
+            IWebHostEnvironment env)
         {
             _recipeRepo = recipeRepo;
             _riRepo = riRepo;
@@ -40,8 +43,71 @@ namespace ICookThis.Modules.Recipes.Services
             _ingredientRepo = ingredientRepo;
             _unitRepo = unitRepo;
             _mapper = mapper;
+            _env = env;
         }
 
+        public async Task<PagedResult<RecipeResponse>> GetPagedAsync(
+            int page,
+            int pageSize,
+            string? search,
+            RecipeSortBy sortBy,
+            SortOrder sortOrder)
+        {
+            if (page < 1) page = 1;
+            if (pageSize < 1) pageSize = 10;
+
+            // 1) pobierz przepisów z repo (z filtrem, sortowaniem, paginacją)
+            var (recipes, total) = await _recipeRepo.GetPagedAsync(
+                page, pageSize, search, sortBy, sortOrder);
+
+            // 2) batch-load składników
+            var recipeIds = recipes.Select(r => r.Id).ToList();
+            var allRis = (await _riRepo.GetByRecipeIdsAsync(recipeIds)).ToList();
+            var ingredientIds = allRis.Select(ri => ri.IngredientId).Distinct();
+            var unitIds = allRis.Select(ri => ri.UnitId).Distinct();
+
+            var allIngredients = (await _ingredientRepo.GetByIdsAsync(ingredientIds))
+                                     .ToDictionary(i => i.Id);
+            var allUnits = (await _unitRepo.GetByIdsAsync(unitIds))
+                                     .ToDictionary(u => u.Id);
+
+            // 3) budujemy DTO
+            var items = new List<RecipeResponse>(recipes.Count());
+            foreach (var recipe in recipes)
+            {
+                var dto = _mapper.Map<RecipeResponse>(recipe);
+
+                // DefaultUnit
+                var du = await _unitRepo.GetByIdAsync(recipe.DefaultUnitId);
+                dto.DefaultUnit = _mapper.Map<UnitResponse>(du);
+
+                // Ingredients
+                var risForThis = allRis.Where(ri => ri.RecipeId == recipe.Id);
+                dto.Ingredients = risForThis.Select(ri => new RecipeIngredientResponse
+                {
+                    Id = ri.Id,
+                    RecipeId = ri.RecipeId,
+                    Ingredient = _mapper.Map<IngredientResponse>(allIngredients[ri.IngredientId]),
+                    Qty = ri.Qty,
+                    Unit = _mapper.Map<UnitResponse>(allUnits[ri.UnitId])
+                }).ToList();
+
+                items.Add(dto);
+            }
+
+            // 4) zwróć PagedResult
+            return new PagedResult<RecipeResponse>
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = total,
+                TotalPages = (int)Math.Ceiling(total / (double)pageSize),
+                Items = items,
+                SortBy = sortBy,
+                SortOrder = sortOrder,
+                Search = search
+            };
+        }
         public async Task<IEnumerable<RecipeResponse>> GetAllAsync()
         {
             var recipes = await _recipeRepo.GetAllAsync();
@@ -50,56 +116,65 @@ namespace ICookThis.Modules.Recipes.Services
 
         public async Task<RecipeResponse> GetByIdAsync(int id, decimal? scale = null)
         {
+            // 1) Pobierz główną encję
             var recipe = await _recipeRepo.GetByIdAsync(id)
                          ?? throw new KeyNotFoundException($"Recipe {id} not found");
 
-            // 1. Mapowanie podstawowych pól
+            // 2) Mapowanie podstawowych pól
             var dto = _mapper.Map<RecipeResponse>(recipe);
 
-            // 2. DefaultUnit
+            // 3) DefaultUnit (tylko jedno zapytanie)
             var defaultUnit = await _unitRepo.GetByIdAsync(recipe.DefaultUnitId);
             dto.DefaultUnit = _mapper.Map<UnitResponse>(defaultUnit);
 
-            // 3. Ingredients
-            var ris = await _riRepo.GetByRecipeAsync(id);
-            dto.Ingredients = new List<RecipeIngredientResponse>();
-            foreach (var ri in ris)
+            // 4) Batch-load RecipeIngredients
+            var ris = (await _riRepo.GetByRecipeIdsAsync(new[] { id })).ToList();
+            // 4a) Batch-load powiązanych Ingredient i Unit
+            var ingredientIds = ris.Select(ri => ri.IngredientId).Distinct();
+            var unitIds = ris.Select(ri => ri.UnitId).Distinct();
+
+            var allIngredients = (await _ingredientRepo.GetByIdsAsync(ingredientIds))
+                                 .ToDictionary(i => i.Id);
+            var allUnits = (await _unitRepo.GetByIdsAsync(unitIds))
+                                 .ToDictionary(u => u.Id);
+
+            dto.Ingredients = ris.Select(ri => new RecipeIngredientResponse
             {
-                var ing = await _ingredientRepo.GetByIdAsync(ri.IngredientId);
-                var u = await _unitRepo.GetByIdAsync(ri.UnitId);
+                Id = ri.Id,
+                RecipeId = ri.RecipeId,
+                Ingredient = _mapper.Map<IngredientResponse>(allIngredients[ri.IngredientId]),
+                Qty = ri.Qty,
+                Unit = _mapper.Map<UnitResponse>(allUnits[ri.UnitId])
+            }).ToList();
 
-                dto.Ingredients.Add(new RecipeIngredientResponse
-                {
-                    Id = ri.Id,
-                    RecipeId = ri.RecipeId,
-                    Ingredient = _mapper.Map<IngredientResponse>(ing),
-                    Qty = ri.Qty,
-                    Unit = _mapper.Map<UnitResponse>(u)
-                });
-            }
+            // 5) Batch-load InstructionSteps
+            var steps = (await _stepRepo.GetByRecipeIdsAsync(new[] { id }))
+                        .OrderBy(s => s.StepOrder)
+                        .ToList();
+            var stepIds = steps.Select(s => s.Id).ToList();
 
-            // 4. Steps + StepIngredients
-            var steps = await _stepRepo.GetByRecipeAsync(id);
+            // 5a) Batch-load StepIngredients
+            var sis = (await _siRepo.GetByStepIdsAsync(stepIds)).ToList();
+            var siIngredientIds = sis.Select(si => si.IngredientId).Distinct();
+            var allSiIngredients = (await _ingredientRepo.GetByIdsAsync(siIngredientIds))
+                                    .ToDictionary(i => i.Id);
+
             dto.Steps = new List<InstructionStepResponse>();
-            foreach (var step in steps.OrderBy(s => s.StepOrder))
+            foreach (var step in steps)
             {
                 var stepDto = _mapper.Map<InstructionStepResponse>(step);
 
-                var sis = await _siRepo.GetByStepAsync(step.Id);
-                stepDto.StepIngredients = new List<StepIngredientResponse>();
-                foreach (var si in sis)
+                // powiązane składniki kroku
+                var relatedSis = sis.Where(si => si.InstructionStepId == step.Id);
+                stepDto.StepIngredients = relatedSis.Select(si => new StepIngredientResponse
                 {
-                    var ing = await _ingredientRepo.GetByIdAsync(si.IngredientId);
-                    stepDto.StepIngredients.Add(new StepIngredientResponse
-                    {
-                        Id = si.Id,
-                        InstructionStepId = si.InstructionStepId,
-                        Ingredient = _mapper.Map<IngredientResponse>(ing),
-                        Fraction = si.Fraction
-                    });
-                }
+                    Id = si.Id,
+                    InstructionStepId = si.InstructionStepId,
+                    Ingredient = _mapper.Map<IngredientResponse>(allSiIngredients[si.IngredientId]),
+                    Fraction = si.Fraction
+                }).ToList();
 
-                // 5. Zastąpienie placeholderów tekstem
+                // placeholdery i ew. skalowanie tekstu
                 stepDto.Text = step.TemplateText;
                 if (scale.HasValue)
                 {
@@ -113,15 +188,11 @@ namespace ICookThis.Modules.Recipes.Services
                 dto.Steps.Add(stepDto);
             }
 
-            // zastosuj skalowanie do wartości liczbowych
+            // 6) Zastosuj skalowanie wartości numerycznych
             if (scale.HasValue)
             {
                 var s = scale.Value;
-
-                // Skalujemy domyślną ilość porcji
                 dto.DefaultQty *= s;
-
-                // Skalujemy wszystkie składniki
                 foreach (var ri in dto.Ingredients)
                 {
                     ri.Qty *= s;
@@ -131,9 +202,24 @@ namespace ICookThis.Modules.Recipes.Services
             return dto;
         }
 
+
         public async Task<RecipeResponse> CreateAsync(NewRecipeRequest request)
         {
-            // mapowanie głównego przepisu
+            // 1) jeśli jest plik, zapisz go
+            if (request.ImageFile != null)
+            {
+                var uploads = Path.Combine(_env.WebRootPath, "images", "recipes");
+                Directory.CreateDirectory(uploads);
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(request.ImageFile.FileName)}";
+                var filePath = Path.Combine(uploads, fileName);
+                using var stream = System.IO.File.Create(filePath);
+                await request.ImageFile.CopyToAsync(stream);
+                // ustaw w encji ścieżkę relatywną
+                // zakładam, że entity ma pole Image: string
+                request.Image = Path.Combine("images", "recipes", fileName).Replace("\\", "/");
+            }
+
+            // 2) mapowanie głównego przepisu
             var recipeEntity = _mapper.Map<Recipe>(request);
             var created = await _recipeRepo.AddAsync(recipeEntity);
 
@@ -174,9 +260,38 @@ namespace ICookThis.Modules.Recipes.Services
 
         public async Task<RecipeResponse> UpdateAsync(int id, UpdateRecipeRequest request)
         {
+            // 0) Pobierz istniejącą encję i zapisz starą ścieżkę
             var existing = await _recipeRepo.GetByIdAsync(id)
                            ?? throw new KeyNotFoundException($"Recipe {id} not found");
+            var oldImagePath = existing.Image; // np. "images/recipes/abcdef.png"
 
+            // 1) Jeśli jest nowy plik:
+            if (request.ImageFile != null)
+            {
+                // a) usuń stary, jeżeli to nie "default.jpg"
+                if (!string.IsNullOrEmpty(oldImagePath) &&
+                    !oldImagePath.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    var oldFullPath = Path.Combine(_env.WebRootPath, oldImagePath.Replace("/", Path.DirectorySeparatorChar.ToString()));
+                    if (System.IO.File.Exists(oldFullPath))
+                    {
+                        System.IO.File.Delete(oldFullPath);
+                    }
+                }
+
+                // b) zapisz nowy
+                var uploads = Path.Combine(_env.WebRootPath, "images", "recipes");
+                Directory.CreateDirectory(uploads);
+                var fileName = $"{Guid.NewGuid()}{Path.GetExtension(request.ImageFile.FileName)}";
+                var filePath = Path.Combine(uploads, fileName);
+                using var fs = System.IO.File.Create(filePath);
+                await request.ImageFile.CopyToAsync(fs);
+
+                // c) nadpisz pole Image w DTO
+                request.Image = Path.Combine("images/recipes", fileName).Replace("\\", "/");
+            }
+
+            // 2) Mapowanie i zapis
             _mapper.Map(request, existing);
             await _recipeRepo.UpdateAsync(existing);
 

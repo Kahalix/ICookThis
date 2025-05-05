@@ -18,7 +18,11 @@ namespace ICookThis.Modules.Recipes.Dtos
         [Required]
         public DishType DishType { get; set; }
 
-        public required string Instructions { get; set; }
+        public required string Description { get; set; }
+        
+        public string Image { get; set; } = "default.jpg";
+
+        public IFormFile? ImageFile { get; set; }
 
         public List<RecipeIngredientRequest> Ingredients { get; set; } = new List<RecipeIngredientRequest>();
 

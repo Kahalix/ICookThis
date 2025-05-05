@@ -36,6 +36,7 @@ namespace ICookThis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Units", x => x.Id);
+                    table.CheckConstraint("CK_Unit_Type_Range", "[Type] >= 0 AND [Type] <= 2");
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +49,8 @@ namespace ICookThis.Migrations
                     DefaultQty = table.Column<decimal>(type: "decimal(9,3)", nullable: false),
                     DefaultUnitId = table.Column<int>(type: "int", nullable: false),
                     DishType = table.Column<int>(type: "int", nullable: false),
-                    Instructions = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
+                    Description = table.Column<string>(type: "NVARCHAR(MAX)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     AvgRating = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
                     AvgDifficulty = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
                     RecommendPercentage = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: true),
@@ -57,6 +59,9 @@ namespace ICookThis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recipes", x => x.Id);
+                    table.CheckConstraint("CK_Recipe_DefaultQty_Positive", "[DefaultQty] > 0");
+                    table.CheckConstraint("CK_Recipe_DefaultQty_Range", "[DefaultQty] > 0");
+                    table.CheckConstraint("CK_Review_DishType_Range", "[DishType] >= 0 AND [DishType] <= 4");
                     table.ForeignKey(
                         name: "FK_Recipes_Units_DefaultUnitId",
                         column: x => x.DefaultUnitId,
@@ -72,6 +77,7 @@ namespace ICookThis.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecipeId = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     StepOrder = table.Column<int>(type: "int", nullable: false),
                     TemplateText = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -100,6 +106,7 @@ namespace ICookThis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RecipeIngredients", x => x.Id);
+                    table.CheckConstraint("CK_RecipeIngredient_Qty_Positive", "[Qty] > 0");
                     table.ForeignKey(
                         name: "FK_RecipeIngredients_Ingredients_IngredientId",
                         column: x => x.IngredientId,
@@ -138,6 +145,9 @@ namespace ICookThis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => x.Id);
+                    table.CheckConstraint("CK_Review_Difficulty_Range", "[Difficulty] >= 1 AND [Difficulty] <= 5");
+                    table.CheckConstraint("CK_Review_PreparationTime_Range", "[PreparationTimeMinutes] >= 1");
+                    table.CheckConstraint("CK_Review_Rating_Range", "[Rating] >= 1 AND [Rating] <= 5");
                     table.ForeignKey(
                         name: "FK_Reviews_Recipes_RecipeId",
                         column: x => x.RecipeId,
@@ -159,6 +169,7 @@ namespace ICookThis.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StepIngredients", x => x.Id);
+                    table.CheckConstraint("CK_StepIngredient_Fraction_Range", "[Fraction] >= 0 AND [Fraction] <= 1");
                     table.ForeignKey(
                         name: "FK_StepIngredients_Ingredients_IngredientId",
                         column: x => x.IngredientId,
@@ -174,9 +185,16 @@ namespace ICookThis.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_InstructionSteps_RecipeId",
+                name: "IX_Ingredients_Name",
+                table: "Ingredients",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InstructionSteps_RecipeId_StepOrder",
                 table: "InstructionSteps",
-                column: "RecipeId");
+                columns: new[] { "RecipeId", "StepOrder" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_RecipeIngredients_IngredientId",
@@ -199,6 +217,12 @@ namespace ICookThis.Migrations
                 column: "DefaultUnitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Recipes_Name_DishType",
+                table: "Recipes",
+                columns: new[] { "Name", "DishType" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_RecipeId",
                 table: "Reviews",
                 column: "RecipeId");
@@ -212,6 +236,12 @@ namespace ICookThis.Migrations
                 name: "IX_StepIngredients_InstructionStepId",
                 table: "StepIngredients",
                 column: "InstructionStepId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Units_Symbol",
+                table: "Units",
+                column: "Symbol",
+                unique: true);
         }
 
         /// <inheritdoc />

@@ -1,10 +1,15 @@
-﻿namespace ICookThis.Modules.Recipes.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ICookThis.Modules.Recipes.Entities
 {
     public class InstructionStep
     {
         public int Id { get; set; }
 
         public int RecipeId { get; set; }
+
+        [MaxLength(200)]
+        public string? Image { get; set; }
 
         /// <summary>
         /// Step order

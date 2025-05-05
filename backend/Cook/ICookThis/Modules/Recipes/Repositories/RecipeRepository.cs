@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using ICookThis.Data;
+using ICookThis.Modules.Recipes.Dtos;
 using ICookThis.Modules.Recipes.Entities;
+using ICookThis.Shared.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace ICookThis.Modules.Recipes.Repositories
@@ -11,6 +13,57 @@ namespace ICookThis.Modules.Recipes.Repositories
     {
         private readonly CookThisDbContext _db;
         public RecipeRepository(CookThisDbContext db) => _db = db;
+
+        public async Task<(IEnumerable<Recipe> Items, int TotalCount)> GetPagedAsync(
+            int page,
+            int pageSize,
+            string? search,
+            RecipeSortBy sortBy,
+            SortOrder sortOrder)
+        {
+            // 0) bazowe zapytanie
+            IQueryable<Recipe> query = _db.Recipes;
+
+            // 1) filtr po nazwie (nullable)
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                query = query.Where(r => EF.Functions.Like(r.Name, $"%{term}%"));
+            }
+
+            // 2) sortowanie
+            bool desc = sortOrder == SortOrder.Desc;
+            switch (sortBy)
+            {
+                case RecipeSortBy.Name:
+                    query = desc
+                        ? query.OrderByDescending(r => r.Name)
+                        : query.OrderBy(r => r.Name);
+                    break;
+                case RecipeSortBy.AvgRating:
+                    query = desc
+                        ? query.OrderByDescending(r => r.AvgRating)
+                        : query.OrderBy(r => r.AvgRating);
+                    break;
+                case RecipeSortBy.AvgPreparationTime:
+                    query = desc
+                        ? query.OrderByDescending(r => r.AvgPreparationTimeMinutes)
+                        : query.OrderBy(r => r.AvgPreparationTimeMinutes);
+                    break;
+                default:
+                    query = query.OrderBy(r => r.Name);
+                    break;
+            }
+
+            // 3) paginacja
+            var total = await query.CountAsync();
+            var items = await query
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (items, total);
+        }
 
         public Task<IEnumerable<Recipe>> GetAllAsync() =>
             Task.FromResult<IEnumerable<Recipe>>(_db.Recipes);

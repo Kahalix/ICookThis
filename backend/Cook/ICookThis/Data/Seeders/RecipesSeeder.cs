@@ -19,7 +19,8 @@ namespace ICookThis.Data.Seeders
                     DefaultQty = 500m,
                     DefaultUnitId = g,
                     DishType = DishType.Dessert,
-                    Instructions = "Mix and cook"
+                    Description = "Tasty pancakes for you",
+                    Image = "pancakes.jpg"
                 },
                 new Recipe
                 {
@@ -27,7 +28,8 @@ namespace ICookThis.Data.Seeders
                     DefaultQty = 1000m,
                     DefaultUnitId = g,
                     DishType = DishType.MainCourse,
-                    Instructions = "Boil and mash"
+                    Description = "Creamy mashed potatoes with butter and milk",
+                    Image = "mashed_potatoes.jpg"
                 }
             );
             await db.SaveChangesAsync();

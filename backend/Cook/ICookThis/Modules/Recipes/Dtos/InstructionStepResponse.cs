@@ -16,5 +16,7 @@ namespace ICookThis.Modules.Recipes.Dtos
         public required string Text { get; set; }
 
         public List<StepIngredientResponse>? StepIngredients { get; set; }
+        public required string Image { get; set; }
+
     }
 }

@@ -11,5 +11,7 @@ namespace ICookThis.Modules.Units.Repositories
         Task<Unit> AddAsync(Unit unit);
         Task<Unit> UpdateAsync(Unit unit);
         Task DeleteAsync(int id);
+        Task<IEnumerable<Unit>> GetByIdsAsync(IEnumerable<int> ids);
+
     }
 }

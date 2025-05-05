@@ -38,5 +38,11 @@ namespace ICookThis.Modules.Units.Repositories
             _db.Units.Remove(u);
             await _db.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Unit>> GetByIdsAsync(IEnumerable<int> ids)
+        {
+            return await _db.Units
+                            .Where(u => ids.Contains(u.Id))
+                            .ToListAsync();
+        }
     }
 }
