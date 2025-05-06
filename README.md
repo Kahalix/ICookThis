@@ -7,7 +7,7 @@ Food recipes and reviews web app ASP .Net Core Vue.js
 
 Endpoints for testing (import to postman):
 
-1. Ingredients (JSON)
+# 1. Ingredients (JSON)
 
 # Get paged
 curl -X GET "http://localhost:5284/api/ingredients?page=1&pageSize=10&search=flour" \
@@ -33,7 +33,7 @@ curl -X PUT http://localhost:5284/api/ingredients/2 \
 curl -X DELETE http://localhost:5284/api/ingredients/2
 
 
-2. Units (JSON)
+# 2. Units (JSON)
 
 # Get all
 curl -X GET http://localhost:5284/api/units \
@@ -59,19 +59,19 @@ curl -X PUT http://localhost:5284/api/units/2 \
 curl -X DELETE http://localhost:5284/api/units/2
 
 
-3. Recipes
+# 3. Recipes
 
-a) Paged / List (JSON)
+# a) Paged / List (JSON)
 
 curl -X GET "http://localhost:5284/api/recipes?page=1&pageSize=10&search=pancake&sortBy=AvgRating&sortOrder=Desc" \
   -H "Accept: application/json"
   
-b) Get single with scale
+# b) Get single with scale
 
 curl -X GET "http://localhost:5284/api/recipes/5?scale=2.0" \
   -H "Accept: application/json"
   
-c) Create Recipe (form-data)
+# c) Create Recipe (form-data)
 
 curl -X POST http://localhost:5284/api/recipes \
   -H "Accept: application/json" \
@@ -94,7 +94,7 @@ curl -X POST http://localhost:5284/api/recipes \
   -F "Steps[0].StepIngredients[0].IngredientId=2" \
   -F "Steps[0].StepIngredients[0].Fraction=1,0"
   
-d) Update Recipe (form-data)
+# d) Update Recipe (form-data)
 
 curl -X PUT http://localhost:5284/api/recipes/5 \
   -H "Accept: application/json" \
@@ -117,12 +117,12 @@ curl -X PUT http://localhost:5284/api/recipes/5 \
   -F "Steps[0].StepIngredients[0].IngredientId=2" \
   -F "Steps[0].StepIngredients[0].Fraction=1,0"
   
-e) Delete Recipe
+# e) Delete Recipe
 
 curl -X DELETE http://localhost:5284/api/recipes/5
 
 
-4. Recipe Ingredients (JSON)
+# 4. Recipe Ingredients (JSON)
 
 # List
 curl -X GET http://localhost:5284/api/recipes/5/recipeingredients \
@@ -148,7 +148,7 @@ curl -X PUT http://localhost:5284/api/recipes/5/recipeingredients/9 \
 curl -X DELETE http://localhost:5284/api/recipes/5/recipeingredients/9
 
 
-5. Instruction Steps (form-data)
+# 5. Instruction Steps (form-data)
 
 # List
 curl -X GET http://localhost:5284/api/recipes/5/instructionsteps \
