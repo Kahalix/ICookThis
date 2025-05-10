@@ -26,6 +26,6 @@ namespace ICookThis.Modules.Recipes.Dtos
 
         public List<RecipeIngredientRequest> Ingredients { get; set; } = new List<RecipeIngredientRequest>();
 
-        public List<InstructionStepRequest> Steps { get; set; } = new List<InstructionStepRequest>();
+        public List<NewInstructionStepRequest> Steps { get; set; } = new List<NewInstructionStepRequest>();
     }
 }

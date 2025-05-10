@@ -13,6 +13,7 @@ namespace ICookThis.Modules.Recipes.Dtos
         public string Image{ get; set; } = "default.jpg";
         public IFormFile? ImageFile { get; set; }
         public List<RecipeIngredientRequest> Ingredients { get; set; } = new();
-        public List<InstructionStepRequest> Steps { get; set; } = new();
+        public List<UpdateInstructionStepRequest> Steps { get; set; } = new();
+        public bool RemoveImage { get; set; }
     }
 }

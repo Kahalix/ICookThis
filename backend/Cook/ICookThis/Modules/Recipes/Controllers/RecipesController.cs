@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ICookThis.Modules.Recipes.Dtos;
+using ICookThis.Modules.Recipes.Entities;
 using ICookThis.Modules.Recipes.Services;
 using ICookThis.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,10 @@ namespace ICookThis.Modules.Recipes.Controllers
         [FromQuery] int pageSize = 10,
         [FromQuery] string? search = null,
         [FromQuery] RecipeSortBy sortBy = RecipeSortBy.Name,
-        [FromQuery] SortOrder sortOrder = SortOrder.Asc)
+        [FromQuery] SortOrder sortOrder = SortOrder.Asc,
+        [FromQuery] DishType? dishType = null)
         {
-            return _service.GetPagedAsync(page, pageSize, search, sortBy, sortOrder);
+            return _service.GetPagedAsync(page, pageSize, search, sortBy, sortOrder, dishType);
         }
 
         //[HttpGet]
@@ -31,7 +33,8 @@ namespace ICookThis.Modules.Recipes.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<RecipeResponse>> Get(int id, [FromQuery] decimal? scale = null)
         {
-            var dto = await _service.GetByIdAsync(id, scale);
+            var actualScale = scale ?? 1m;
+            var dto = await _service.GetByIdAsync(id, actualScale);
             if (dto == null) return NotFound();
             return Ok(dto);
         }

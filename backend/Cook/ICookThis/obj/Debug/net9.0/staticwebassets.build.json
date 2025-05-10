@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5mScp8lG4vEcPfUkG+9DWhPHG2XBr4JWSc6Q0F0/PNE=",
+  "Hash": "TIIuBVwMCiPtxkyec++dLm59tHd3vOH+xCOSn5eyP9E=",
   "Source": "ICookThis",
   "BasePath": "_content/ICookThis",
   "Mode": "Default",
@@ -57,6 +57,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\instructionsteps\\9c2a9ecd-83af-4bc3-86ef-36535a9cae93.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\9a9dfa86-52f3-447e-8508-d6d69c836822.jpg",
+      "SourceId": "ICookThis",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\",
+      "BasePath": "_content/ICookThis",
+      "RelativePath": "images/recipes/9a9dfa86-52f3-447e-8508-d6d69c836822#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mz2wlpkind",
+      "Integrity": "ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\recipes\\9a9dfa86-52f3-447e-8508-d6d69c836822.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\d918917d-685f-4cbc-97c0-c6991b82fc25.jpg",
+      "SourceId": "ICookThis",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\",
+      "BasePath": "_content/ICookThis",
+      "RelativePath": "images/recipes/d918917d-685f-4cbc-97c0-c6991b82fc25#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mz2wlpkind",
+      "Integrity": "ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\recipes\\d918917d-685f-4cbc-97c0-c6991b82fc25.jpg"
     },
     {
       "Identity": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\fe345f63-b7ff-44d3-b898-00c0a572a0d1.jpg",
@@ -238,6 +280,170 @@
         {
           "Name": "label",
           "Value": "images/instructionsteps/9c2a9ecd-83af-4bc3-86ef-36535a9cae93.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/recipes/9a9dfa86-52f3-447e-8508-d6d69c836822.jpg",
+      "AssetFile": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\9a9dfa86-52f3-447e-8508-d6d69c836822.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 21:15:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/recipes/9a9dfa86-52f3-447e-8508-d6d69c836822.mz2wlpkind.jpg",
+      "AssetFile": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\9a9dfa86-52f3-447e-8508-d6d69c836822.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 21:15:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mz2wlpkind"
+        },
+        {
+          "Name": "label",
+          "Value": "images/recipes/9a9dfa86-52f3-447e-8508-d6d69c836822.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/recipes/d918917d-685f-4cbc-97c0-c6991b82fc25.jpg",
+      "AssetFile": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\d918917d-685f-4cbc-97c0-c6991b82fc25.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 21:13:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/recipes/d918917d-685f-4cbc-97c0-c6991b82fc25.mz2wlpkind.jpg",
+      "AssetFile": "C:\\Users\\snipe\\Desktop\\.net\\backend\\Cook\\ICookThis\\wwwroot\\images\\recipes\\d918917d-685f-4cbc-97c0-c6991b82fc25.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "122298"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ItBj8UN59aETRBxbBpkmJG8Je1QTikN6o/R8lgSCtXQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 07 May 2025 21:13:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mz2wlpkind"
+        },
+        {
+          "Name": "label",
+          "Value": "images/recipes/d918917d-685f-4cbc-97c0-c6991b82fc25.jpg"
         },
         {
           "Name": "integrity",

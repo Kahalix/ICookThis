@@ -26,14 +26,14 @@ namespace ICookThis.Modules.Recipes.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<InstructionStepResponse>> Create(int recipeId, [FromForm] InstructionStepRequest dto)
+        public async Task<ActionResult<InstructionStepResponse>> Create(int recipeId, [FromForm] NewInstructionStepRequest dto)
         {
             var created = await _service.CreateAsync(recipeId, dto);
             return CreatedAtAction(nameof(Get), new { recipeId, id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<InstructionStepResponse>> Update(int recipeId, int id, [FromForm] InstructionStepRequest dto)
+        public async Task<ActionResult<InstructionStepResponse>> Update(int recipeId, int id, [FromForm] UpdateInstructionStepRequest dto)
         {
             var updated = await _service.UpdateAsync(id, dto);
             return Ok(updated);

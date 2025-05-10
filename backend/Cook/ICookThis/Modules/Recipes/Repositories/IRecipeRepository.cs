@@ -14,7 +14,8 @@ namespace ICookThis.Modules.Recipes.Repositories
             int pageSize,
             string? search,
             RecipeSortBy sortBy,
-            SortOrder sortOrder);
+            SortOrder sortOrder,
+            DishType? dishType);
         Task<IEnumerable<Recipe>> GetAllAsync();
         Task<Recipe?> GetByIdAsync(int id);
         Task<Recipe> AddAsync(Recipe recipe);

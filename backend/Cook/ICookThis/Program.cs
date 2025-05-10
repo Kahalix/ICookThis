@@ -76,6 +76,16 @@ builder.Services
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .WithOrigins("http://localhost:5173", "http://www.localhost:5173", "http://localhost:5174", "http://www.localhost:5174")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // 8. Automatyczne migracje (dev only – usunąć EnsureDeleted w prod)
@@ -110,6 +120,9 @@ var dbS = scopeS.ServiceProvider.GetRequiredService<CookThisDbContext>();
 await DbSeeder.SeedAsync(dbS);
 
 // 9. Pipeline
+
+// CORS 
+app.UseCors("AllowFrontend");
 
 app.UseStaticFiles();
 

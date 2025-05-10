@@ -8,8 +8,8 @@ namespace ICookThis.Modules.Recipes.Services
     {
         Task<IEnumerable<InstructionStepResponse>> GetByRecipeAsync(int recipeId);
         Task<InstructionStepResponse> GetByIdAsync(int id);
-        Task<InstructionStepResponse> CreateAsync(int recipeId, InstructionStepRequest dto);
-        Task<InstructionStepResponse> UpdateAsync(int id, InstructionStepRequest dto);
+        Task<InstructionStepResponse> CreateAsync(int recipeId, NewInstructionStepRequest dto);
+        Task<InstructionStepResponse> UpdateAsync(int id, UpdateInstructionStepRequest dto);
         Task DeleteAsync(int id);
     }
 }

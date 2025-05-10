@@ -33,7 +33,8 @@ namespace ICookThis.Mapping
             CreateMap<RecipeIngredientRequest, RecipeIngredient>();
             CreateMap<RecipeIngredient, RecipeIngredientResponse>();
 
-            CreateMap<InstructionStepRequest, InstructionStep>();
+            CreateMap<NewInstructionStepRequest, InstructionStep>();
+            CreateMap<UpdateInstructionStepRequest, InstructionStep>();
             CreateMap<InstructionStep, InstructionStepResponse>();
 
             CreateMap<StepIngredientRequest, StepIngredient>();

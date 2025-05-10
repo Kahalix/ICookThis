@@ -47,29 +47,33 @@ namespace ICookThis.Modules.Recipes.Services
         }
 
         public async Task<PagedResult<RecipeResponse>> GetPagedAsync(
-            int page,
-            int pageSize,
-            string? search,
-            RecipeSortBy sortBy,
-            SortOrder sortOrder)
+    int page,
+    int pageSize,
+    string? search,
+    RecipeSortBy sortBy,
+    SortOrder sortOrder,
+    DishType? dishType)
         {
             if (page < 1) page = 1;
             if (pageSize < 1) pageSize = 10;
 
-            // 1) pobierz przepisów z repo (z filtrem, sortowaniem, paginacją)
+            // 1) pobierz przepisy z repozytorium
             var (recipes, total) = await _recipeRepo.GetPagedAsync(
-                page, pageSize, search, sortBy, sortOrder);
+                page, pageSize, search, sortBy, sortOrder, dishType);
 
-            // 2) batch-load składników
+            // 2) batch-load składników przepisu
             var recipeIds = recipes.Select(r => r.Id).ToList();
             var allRis = (await _riRepo.GetByRecipeIdsAsync(recipeIds)).ToList();
             var ingredientIds = allRis.Select(ri => ri.IngredientId).Distinct();
             var unitIds = allRis.Select(ri => ri.UnitId).Distinct();
 
+            // 2a) batch-load jednostek domyślnych dla przepisów
+            var defaultUnitIds = recipes.Select(r => r.DefaultUnitId).Distinct();
+            var allUnits = (await _unitRepo.GetByIdsAsync(unitIds.Concat(defaultUnitIds).Distinct()))
+                                    .ToDictionary(u => u.Id);
+
             var allIngredients = (await _ingredientRepo.GetByIdsAsync(ingredientIds))
                                      .ToDictionary(i => i.Id);
-            var allUnits = (await _unitRepo.GetByIdsAsync(unitIds))
-                                     .ToDictionary(u => u.Id);
 
             // 3) budujemy DTO
             var items = new List<RecipeResponse>(recipes.Count());
@@ -77,11 +81,10 @@ namespace ICookThis.Modules.Recipes.Services
             {
                 var dto = _mapper.Map<RecipeResponse>(recipe);
 
-                // DefaultUnit
-                var du = await _unitRepo.GetByIdAsync(recipe.DefaultUnitId);
-                dto.DefaultUnit = _mapper.Map<UnitResponse>(du);
+                // użycie już pobranej jednostki
+                dto.DefaultUnit = _mapper.Map<UnitResponse>(allUnits[recipe.DefaultUnitId]);
 
-                // Ingredients
+                // składniki
                 var risForThis = allRis.Where(ri => ri.RecipeId == recipe.Id);
                 dto.Ingredients = risForThis.Select(ri => new RecipeIngredientResponse
                 {
@@ -95,7 +98,7 @@ namespace ICookThis.Modules.Recipes.Services
                 items.Add(dto);
             }
 
-            // 4) zwróć PagedResult
+            // 4) zwróć wynik z paginacją
             return new PagedResult<RecipeResponse>
             {
                 Page = page,
@@ -205,7 +208,7 @@ namespace ICookThis.Modules.Recipes.Services
 
         public async Task<RecipeResponse> CreateAsync(NewRecipeRequest request)
         {
-            // 1) jeśli jest plik, zapisz go
+            // 1) Jeśli przesłano obrazek przepisu — zapisz go
             if (request.ImageFile != null)
             {
                 var uploads = Path.Combine(_env.WebRootPath, "images", "recipes");
@@ -214,36 +217,44 @@ namespace ICookThis.Modules.Recipes.Services
                 var filePath = Path.Combine(uploads, fileName);
                 using var stream = System.IO.File.Create(filePath);
                 await request.ImageFile.CopyToAsync(stream);
-                // ustaw w encji ścieżkę relatywną
-                // zakładam, że entity ma pole Image: string
                 request.Image = Path.Combine("images", "recipes", fileName).Replace("\\", "/");
             }
 
-            // 2) mapowanie głównego przepisu
+            // 2) Mapuj i dodaj główną encję przepisu
             var recipeEntity = _mapper.Map<Recipe>(request);
             var created = await _recipeRepo.AddAsync(recipeEntity);
 
-            // składniki przepisu
-            var riEntities = request.Ingredients
-                .Select(dto =>
-                {
-                    var e = _mapper.Map<RecipeIngredient>(dto);
-                    e.RecipeId = created.Id;
-                    return e;
-                });
+            // 3) Dodaj składniki przepisu
+            var riEntities = request.Ingredients.Select(dto =>
+            {
+                var e = _mapper.Map<RecipeIngredient>(dto);
+                e.RecipeId = created.Id;
+                return e;
+            });
 
             foreach (var ri in riEntities)
                 await _riRepo.AddAsync(ri);
 
-            // kroki instrukcji i ich składniki
+            // 4) Dodaj kroki i składniki kroków
             foreach (var stepDto in request.Steps)
             {
+                // Obsługa obrazka kroku (jeśli przesłano)
+                if (stepDto.ImageFile != null)
+                {
+                    var uploads = Path.Combine(_env.WebRootPath, "images", "instructionsteps");
+                    Directory.CreateDirectory(uploads);
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(stepDto.ImageFile.FileName)}";
+                    var filePath = Path.Combine(uploads, fileName);
+                    using var stream = System.IO.File.Create(filePath);
+                    await stepDto.ImageFile.CopyToAsync(stream);
+                    stepDto.Image = Path.Combine("images", "instructionsteps", fileName).Replace("\\", "/");
+                }
+
                 var stepEntity = _mapper.Map<InstructionStep>(stepDto);
                 stepEntity.RecipeId = created.Id;
                 var addedStep = await _stepRepo.AddAsync(stepEntity);
 
-                var siEntities = (stepDto.StepIngredients
-                          ?? Enumerable.Empty<StepIngredientRequest>())
+                var siEntities = (stepDto.StepIngredients ?? Enumerable.Empty<StepIngredientRequest>())
                     .Select(siDto =>
                     {
                         var e = _mapper.Map<StepIngredient>(siDto);
@@ -263,23 +274,28 @@ namespace ICookThis.Modules.Recipes.Services
             // 0) Pobierz istniejącą encję i zapisz starą ścieżkę
             var existing = await _recipeRepo.GetByIdAsync(id)
                            ?? throw new KeyNotFoundException($"Recipe {id} not found");
-            var oldImagePath = existing.Image; // np. "images/recipes/abcdef.png"
+            var oldImagePath = existing.Image;
 
-            // 1) Jeśli jest nowy plik:
+            // 1) Czy trzeba usunąć stary obrazek?
+            var shouldRemoveOldImage = request.RemoveImage || request.ImageFile != null;
+
+            if (shouldRemoveOldImage &&
+                !string.IsNullOrEmpty(oldImagePath) &&
+                !oldImagePath.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
+            {
+                var oldFullPath = Path.Combine(
+                    _env.WebRootPath,
+                    oldImagePath.Replace("/", Path.DirectorySeparatorChar.ToString())
+                );
+                if (System.IO.File.Exists(oldFullPath))
+                {
+                    System.IO.File.Delete(oldFullPath);
+                }
+            }
+
+            // 2) Jeśli przesłano nowy plik — zapisz go
             if (request.ImageFile != null)
             {
-                // a) usuń stary, jeżeli to nie "default.jpg"
-                if (!string.IsNullOrEmpty(oldImagePath) &&
-                    !oldImagePath.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
-                {
-                    var oldFullPath = Path.Combine(_env.WebRootPath, oldImagePath.Replace("/", Path.DirectorySeparatorChar.ToString()));
-                    if (System.IO.File.Exists(oldFullPath))
-                    {
-                        System.IO.File.Delete(oldFullPath);
-                    }
-                }
-
-                // b) zapisz nowy
                 var uploads = Path.Combine(_env.WebRootPath, "images", "recipes");
                 Directory.CreateDirectory(uploads);
                 var fileName = $"{Guid.NewGuid()}{Path.GetExtension(request.ImageFile.FileName)}";
@@ -287,15 +303,19 @@ namespace ICookThis.Modules.Recipes.Services
                 using var fs = System.IO.File.Create(filePath);
                 await request.ImageFile.CopyToAsync(fs);
 
-                // c) nadpisz pole Image w DTO
-                request.Image = Path.Combine("images/recipes", fileName).Replace("\\", "/");
+                request.Image = Path.Combine("images", "recipes", fileName).Replace("\\", "/");
+            }
+            else if (request.RemoveImage)
+            {
+                // Jeśli usuwamy, ale nie dodano nowego – ustaw domyślne
+                request.Image = "images/recipes/default.jpg";
             }
 
-            // 2) Mapowanie i zapis
+            // 3) Mapowanie i zapis
             _mapper.Map(request, existing);
             await _recipeRepo.UpdateAsync(existing);
 
-            // wymiana składników
+            // 4) Wymiana składników
             var oldRis = await _riRepo.GetByRecipeAsync(id);
             foreach (var old in oldRis)
                 await _riRepo.DeleteAsync(old.Id);
@@ -311,10 +331,22 @@ namespace ICookThis.Modules.Recipes.Services
             foreach (var ri in newRis)
                 await _riRepo.AddAsync(ri);
 
-            // wymiana kroków i składników kroków
+            // 5) Wymiana kroków i ich składników
             var oldSteps = await _stepRepo.GetByRecipeAsync(id);
             foreach (var os in oldSteps)
             {
+                // Usuń obrazek kroku jeśli istnieje i nie jest domyślny
+                if (!string.IsNullOrEmpty(os.Image)
+                    && !os.Image.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    var path = Path.Combine(
+                        _env.WebRootPath,
+                        os.Image.Replace("/", Path.DirectorySeparatorChar.ToString())
+                    );
+                    if (System.IO.File.Exists(path))
+                        System.IO.File.Delete(path);
+                }
+
                 var oldSis = await _siRepo.GetByStepAsync(os.Id);
                 foreach (var osi in oldSis)
                     await _siRepo.DeleteAsync(osi.Id);
@@ -324,12 +356,28 @@ namespace ICookThis.Modules.Recipes.Services
 
             foreach (var stepDto in request.Steps)
             {
+                // Obsługa obrazka kroku
+                if (stepDto.ImageFile != null)
+                {
+                    var uploads = Path.Combine(_env.WebRootPath, "images", "instructionsteps");
+                    Directory.CreateDirectory(uploads);
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(stepDto.ImageFile.FileName)}";
+                    var filePath = Path.Combine(uploads, fileName);
+                    using var fs = System.IO.File.Create(filePath);
+                    await stepDto.ImageFile.CopyToAsync(fs);
+
+                    stepDto.Image = Path.Combine("images", "instructionsteps", fileName).Replace("\\", "/");
+                }
+                else if (stepDto.RemoveImage)
+                {
+                    stepDto.Image = null;
+                }
+
                 var stepEntity = _mapper.Map<InstructionStep>(stepDto);
                 stepEntity.RecipeId = id;
                 var addedStep = await _stepRepo.AddAsync(stepEntity);
 
-                var newSis = (stepDto.StepIngredients 
-                          ?? Enumerable.Empty<StepIngredientRequest>())
+                var newSis = (stepDto.StepIngredients ?? Enumerable.Empty<StepIngredientRequest>())
                     .Select(siDto =>
                     {
                         var e = _mapper.Map<StepIngredient>(siDto);
@@ -344,9 +392,42 @@ namespace ICookThis.Modules.Recipes.Services
             return await GetByIdAsync(id);
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            return _recipeRepo.DeleteAsync(id);
+            // 1) Pobierz encję przepisu
+            var recipe = await _recipeRepo.GetByIdAsync(id);
+            if (recipe == null) return;
+
+            // 2) Usuń plik z obrazkiem głównym
+            if (!string.IsNullOrEmpty(recipe.Image)
+                && !recipe.Image.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
+            {
+                var fullPath = Path.Combine(
+                    _env.WebRootPath,
+                    recipe.Image.Replace("/", Path.DirectorySeparatorChar.ToString())
+                );
+                if (File.Exists(fullPath))
+                    File.Delete(fullPath);
+            }
+
+            // 3) Pobierz wszystkie kroki (kaskadowo i tak zostaną usunięte w bazie)
+            var steps = await _stepRepo.GetByRecipeAsync(id);
+            foreach (var step in steps)
+            {
+                if (!string.IsNullOrEmpty(step.Image)
+                    && !step.Image.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    var stepPath = Path.Combine(
+                        _env.WebRootPath,
+                        step.Image.Replace("/", Path.DirectorySeparatorChar.ToString())
+                    );
+                    if (File.Exists(stepPath))
+                        File.Delete(stepPath);
+                }
+            }
+
+            // 4) Usuń encję (EF Core skaskaduje usunięcie kroków i ich składników)
+            await _recipeRepo.DeleteAsync(id);
         }
     }
 }

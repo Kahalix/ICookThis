@@ -19,7 +19,8 @@ namespace ICookThis.Modules.Recipes.Repositories
             int pageSize,
             string? search,
             RecipeSortBy sortBy,
-            SortOrder sortOrder)
+            SortOrder sortOrder,
+            DishType? dishType)
         {
             // 0) bazowe zapytanie
             IQueryable<Recipe> query = _db.Recipes;
@@ -29,6 +30,12 @@ namespace ICookThis.Modules.Recipes.Repositories
             {
                 var term = search.Trim();
                 query = query.Where(r => EF.Functions.Like(r.Name, $"%{term}%"));
+            }
+
+            // 1.1) filtr po typie dania (nullable)
+            if (dishType.HasValue)
+            {
+                query = query.Where(r => r.DishType == dishType.Value);
             }
 
             // 2) sortowanie

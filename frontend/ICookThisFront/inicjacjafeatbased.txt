@@ -1,0 +1,2 @@
+chmod +x init-structure.sh
+./init-structure.sh

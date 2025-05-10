@@ -1,4 +1,5 @@
 ﻿using ICookThis.Modules.Recipes.Dtos;
+using ICookThis.Modules.Recipes.Entities;
 using ICookThis.Shared.Dtos;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,7 +13,8 @@ namespace ICookThis.Modules.Recipes.Services
             int pageSize,
             string? search,
             RecipeSortBy sortBy,
-            SortOrder sortOrder);
+            SortOrder sortOrder,
+            DishType? dishType);
         //        Task<IEnumerable<RecipeResponse>> GetAllAsync();
         Task<RecipeResponse> GetByIdAsync(int id, decimal? scale = null);
         Task<RecipeResponse> CreateAsync(NewRecipeRequest dto);
