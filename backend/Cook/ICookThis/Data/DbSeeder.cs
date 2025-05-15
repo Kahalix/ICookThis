@@ -9,7 +9,6 @@ namespace ICookThis.Data
     {
         public static async Task SeedAsync(CookThisDbContext db)
         {
-            // get all types implementing ISeeder
             var seederTypes = Assembly.GetExecutingAssembly()
                 .GetTypes()
                 .Where(t => typeof(ISeeder).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract)

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using ICookThis.Modules.Reviews.Entities;
 
 namespace ICookThis.Modules.Reviews.Dtos
 {
     public class UpdateReviewRequest
     {
         [MaxLength(100)]
-        public required string Reviewer { get; set; }
+        public string? Reviewer { get; set; }
 
         [Range(1, 5)]
         public int? Difficulty { get; set; }
@@ -14,10 +15,12 @@ namespace ICookThis.Modules.Reviews.Dtos
 
         public string? Comment { get; set; }
 
-        [Range(0, 5)]
+        [Range(1, 5)]
         public decimal? Rating { get; set; }
 
         [Range(1, int.MaxValue)]
         public int? PreparationTimeMinutes { get; set; }
+
+        public ReviewStatus? Status { get; set; }
     }
 }

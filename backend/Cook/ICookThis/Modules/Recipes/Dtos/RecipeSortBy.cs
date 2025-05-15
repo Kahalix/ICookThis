@@ -4,6 +4,7 @@
     {
         Name,
         AvgRating,
-        AvgPreparationTime
+        AvgPreparationTime,
+        ReviewsCount
     }
 }

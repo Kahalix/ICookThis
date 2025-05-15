@@ -27,10 +27,7 @@ import type { RecipeResponse } from '@/entities/recipe/models/recipeModel'
 
 const props = defineProps<{ recipe: RecipeResponse }>()
 
-// backend zapisuje obrazy w wwwroot/images/recipes/<filename> i serwuje je pod /images/recipes/filename: TODO
 const imageUrl = computed(() => {
-  // jeżeli recipe.image to np. "images/recipes/1234.jpg"
-  // chcemy, by w <img> powstało "/images/recipes/1234.jpg"
   return props.recipe.image?.startsWith('/') ? props.recipe.image : `/${props.recipe.image}`
 })
 </script>

@@ -27,7 +27,7 @@ namespace ICookThis.Utils
             {
                 var key = match.Groups[1].Value; // np. "Water"
 
-                // 1) Bazowy składnik po nazwie:
+                // Bazowy składnik po nazwie:
                 RecipeIngredientResponse? baseIng = null;
                 foreach (var ri in recipeIngredients)
                 {
@@ -40,7 +40,7 @@ namespace ICookThis.Utils
                 }
                 if (baseIng == null) return match.Value;
 
-                // 2) Składnik kroku po nazwie:
+                //  Składnik kroku po nazwie:
                 StepIngredientResponse? stepIng = null;
                 foreach (var si in stepIngredients)
                 {
@@ -53,7 +53,7 @@ namespace ICookThis.Utils
                 }
                 if (stepIng == null) return match.Value;
 
-                // 3) Obliczenie ilości
+                //  Obliczenie ilości
                 var qty = baseIng.Qty * stepIng.Fraction * scale;
                 var formattedQty = qty % 1 == 0
                     ? qty.ToString("0", CultureInfo.InvariantCulture)

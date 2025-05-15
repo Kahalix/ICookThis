@@ -4,11 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ICookThis.Modules.Recipes.Entities
 {
-    // Unique constraint on Name and DishType (moved to CookThisDbContext due to lack of functions in EF Core)
-    // [Index(nameof(Name), nameof(DishType), IsUnique = true)]
+    // [Index(nameof(Name), nameof(DishType), IsUnique = true)]  Moved to DBContext
     public class Recipe
     {
         public int Id { get; set; }
+
+        public int UserId { get; set; }
+
+        public AddedBy AddedBy { get; set; } = AddedBy.User;
+
+        public RecipeStatus Status = RecipeStatus.Pending;
 
         [Required, MaxLength(200)]
         public required string Name { get; set; }
@@ -25,7 +30,7 @@ namespace ICookThis.Modules.Recipes.Entities
         public required string Description { get; set; }
 
         [MaxLength(200)]
-        public string Image { get; set; } = "default.jpg";
+        public string? Image { get; set; }
 
         /// <summary>
         /// Average dish rating (1–5)
@@ -47,5 +52,9 @@ namespace ICookThis.Modules.Recipes.Entities
 
         [Column(TypeName = "decimal(9,2)")]
         public decimal? AvgPreparationTimeMinutes { get; set; }
+
+        public int? ReviewsCount { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

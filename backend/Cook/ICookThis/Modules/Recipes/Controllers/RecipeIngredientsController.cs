@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ICookThis.Modules.Recipes.Dtos;
 using ICookThis.Modules.Recipes.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ICookThis.Modules.Recipes.Controllers
@@ -14,11 +15,11 @@ namespace ICookThis.Modules.Recipes.Controllers
         public RecipeIngredientsController(IRecipeIngredientService service)
             => _service = service;
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Admin,Moderator")]
         public Task<IEnumerable<RecipeIngredientResponse>> GetAll(int recipeId) =>
             _service.GetByRecipeAsync(recipeId);
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Admin,Moderator")]
         public async Task<ActionResult<RecipeIngredientResponse>> Get(int recipeId, int id)
         {
             var ri = await _service.GetByIdAsync(id);
@@ -26,7 +27,7 @@ namespace ICookThis.Modules.Recipes.Controllers
             return Ok(ri);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin,Moderator")]
         public async Task<ActionResult<RecipeIngredientResponse>> Create(
             int recipeId,
             [FromBody] RecipeIngredientRequest dto)
@@ -35,7 +36,7 @@ namespace ICookThis.Modules.Recipes.Controllers
             return CreatedAtAction(nameof(Get), new { recipeId, id = created.Id }, created);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Admin,Moderator")]
         public async Task<ActionResult<RecipeIngredientResponse>> Update(
             int recipeId,
             int id,
@@ -45,7 +46,7 @@ namespace ICookThis.Modules.Recipes.Controllers
             return Ok(updated);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Admin,Moderator")]
         public Task Delete(int recipeId, int id) => _service.DeleteAsync(id);
     }
 }

@@ -59,7 +59,6 @@ namespace ICookThis.Modules.Recipes.Services
             var ri = await _repo.GetByIdAsync(id);
             if (ri == null) throw new KeyNotFoundException($"RecipeIngredient with id {id} not found.");
 
-            // Pobierz zależności ręcznie
             var ingredient = await _ingredientRepo.GetByIdAsync(ri.IngredientId);
             var unit = await _unitRepo.GetByIdAsync(ri.UnitId);
 

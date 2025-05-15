@@ -5,7 +5,6 @@ import type {
 } from './instructionStepModel'
 import type { RecipeIngredientResponse, RecipeIngredientRequest } from './recipeIngredientModel'
 
-// requesty
 export interface NewRecipeRequest {
   name: string
   defaultQty: number

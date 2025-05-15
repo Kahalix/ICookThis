@@ -3,7 +3,6 @@
     <h1>{{ isEdit ? 'Edit' : 'Create' }} Recipe</h1>
 
     <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-      <!-- podstawowe pola -->
       <div class="field">
         <label>Name</label>
         <input v-model="form.name" required maxlength="200" />
@@ -46,7 +45,6 @@
         </label>
       </div>
 
-      <!-- Ingredients -->
       <h2>Ingredients</h2>
       <div v-for="(ing, idx) in form.ingredients" :key="idx" class="subfield">
         <select v-model.number="ing.ingredientId" required>
@@ -70,7 +68,6 @@
       </div>
       <button type="button" @click="addIngredient">Add ingredient</button>
 
-      <!-- Steps -->
       <h2>Steps</h2>
       <div v-for="(st, si) in form.steps" :key="si" class="subfield">
         <input type="number" v-model.number="st.stepOrder" placeholder="Order" required />
@@ -109,7 +106,6 @@
       </div>
       <button type="button" @click="addStep">Add step</button>
 
-      <!-- akcje -->
       <div class="actions">
         <button type="submit" :disabled="submitting || (isEdit ? updateLoading : createLoading)">
           {{ isEdit ? 'Update' : 'Create' }}
@@ -245,7 +241,6 @@ function removeStepIngredient(si: number, pi: number) {
 async function onSubmit() {
   submitting.value = true
   try {
-    // Mapujemy kroki na odpowiednie requesty
     const stepsPayload = form.steps.map((st) => {
       const common = {
         stepOrder: st.stepOrder,
@@ -269,7 +264,6 @@ async function onSubmit() {
     })
 
     if (isEdit) {
-      // Przy edycji tworzymy UpdateRecipeRequest
       const payload: UpdateRecipeRequest & { imageFile?: File } = {
         name: form.name,
         defaultQty: form.defaultQty,
@@ -284,7 +278,6 @@ async function onSubmit() {
       await updateExec(id, payload)
       router.push(`/recipes/${updateResult.value!.id}`)
     } else {
-      // Przy tworzeniu nowego – NewRecipeRequest
       const payload: NewRecipeRequest & { imageFile?: File } = {
         name: form.name,
         defaultQty: form.defaultQty,
@@ -304,7 +297,6 @@ async function onSubmit() {
 }
 
 onMounted(async () => {
-  // pobierz dropdowny
   const paged = await fetchIngredients()
   allIngredients.value = paged.items
   allUnits.value = await fetchUnits()
@@ -312,21 +304,18 @@ onMounted(async () => {
   if (isEdit) {
     const recipe = await fetchRecipe(id)
 
-    // fill główne pola
     Object.assign(form, recipe, {
       imageFile: undefined,
       imageUrl: recipe.image,
       removeImage: false,
     })
 
-    // mapowanie składników -> RecipeIngredientRequest
     form.ingredients = recipe.ingredients.map((ri) => ({
       ingredientId: ri.ingredient.id,
       qty: ri.qty,
       unitId: ri.unit.id,
     }))
 
-    // mapowanie kroków jak wcześniej
     form.steps = recipe.steps.map((st) => ({
       id: st.id,
       stepOrder: st.stepOrder,

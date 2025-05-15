@@ -9,7 +9,7 @@ namespace ICookThis.Modules.Units.Entities
         public int Id { get; set; }
 
         [Required, MaxLength(5)]
-        public required string Symbol { get; set; }    // "g","kg","ml","l","szt."
+        public required string Symbol { get; set; }
 
         [Required]
         public UnitType Type { get; set; }

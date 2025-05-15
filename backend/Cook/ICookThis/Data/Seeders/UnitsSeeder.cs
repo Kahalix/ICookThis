@@ -10,6 +10,7 @@ namespace ICookThis.Data.Seeders
         public async Task SeedAsync(CookThisDbContext db)
         {
             if (await db.Units.AnyAsync()) return;
+
             db.Units.AddRange(
                 new Unit { Symbol = "g", Type = UnitType.Mass },
                 new Unit { Symbol = "kg", Type = UnitType.Mass },
@@ -17,6 +18,7 @@ namespace ICookThis.Data.Seeders
                 new Unit { Symbol = "l", Type = UnitType.Volume },
                 new Unit { Symbol = "pc", Type = UnitType.Piece }
             );
+
             await db.SaveChangesAsync();
         }
     }

@@ -3,9 +3,6 @@ import type { PagedResult } from '@/shared/lib/types'
 import type { IngredientResponse } from '../models/ingredientModel'
 import type { AxiosResponse } from 'axios'
 
-/**
- * Pobiera paginowaną listę składników.
- */
 export function fetchIngredients(
   page = 1,
   pageSize = 10,

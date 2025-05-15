@@ -7,6 +7,7 @@ namespace ICookThis.Modules.Recipes.Entities
         public int Id { get; set; }
 
         public int RecipeId { get; set; }
+        
         public int IngredientId { get; set; }
 
         [Column(TypeName = "decimal(9,3)")]

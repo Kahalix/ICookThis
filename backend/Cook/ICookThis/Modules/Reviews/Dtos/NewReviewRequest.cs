@@ -8,7 +8,7 @@ namespace ICookThis.Modules.Reviews.Dtos
         public int RecipeId { get; set; }
 
         [Required, MaxLength(100)]
-        public required string Reviewer { get; set; }
+        public string Reviewer { get; set; } = null!;
 
         [Range(1, 5)]
         public int Difficulty { get; set; }
@@ -17,7 +17,7 @@ namespace ICookThis.Modules.Reviews.Dtos
 
         public string? Comment { get; set; }
 
-        [Range(0, 5)]
+        [Range(1, 5)]
         public decimal Rating { get; set; }
 
         [Range(1, int.MaxValue)]

@@ -7,14 +7,12 @@ import RecipeFormPage from '@pages/recipes/RecipeFormPage.vue'
 const routes: Array<RouteRecordRaw> = [
   { path: '/', redirect: '/recipes' },
 
-  // lista przepisów
   {
     path: '/recipes',
     name: 'RecipeList',
     component: RecipeListPage,
   },
 
-  // szczegóły przepisu
   {
     path: '/recipes/:id',
     name: 'RecipeDetail',
@@ -22,14 +20,12 @@ const routes: Array<RouteRecordRaw> = [
     props: (route) => ({ id: Number(route.params.id) }),
   },
 
-  // formularz tworzenia nowego przepisu
   {
     path: '/recipes/new',
     name: 'RecipeCreate',
     component: RecipeFormPage,
   },
 
-  // formularz edycji przepisu
   {
     path: '/recipes/:id/edit',
     name: 'RecipeEdit',

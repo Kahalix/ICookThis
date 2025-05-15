@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using ICookThis.Modules.Recipes.Repositories;
+﻿using System.Threading.Tasks;
 using ICookThis.Modules.Reviews.Entities;
+using ICookThis.Modules.Recipes.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace ICookThis.Data.Seeders
@@ -12,15 +11,20 @@ namespace ICookThis.Data.Seeders
         public async Task SeedAsync(CookThisDbContext db)
         {
             if (await db.Reviews.AnyAsync()) return;
+            if (!await db.Recipes.AnyAsync() ||
+                !await db.Users.AnyAsync()) return;
 
-            var pancakeId = db.Recipes.Single(r => r.Name == "Pancakes").Id;
-            var mashId = db.Recipes.Single(r => r.Name == "Mashed Potatoes").Id;
+            var pancake = await db.Recipes.SingleAsync(r => r.Name == "Pancakes");
+            var mash = await db.Recipes.SingleAsync(r => r.Name == "Mashed Potatoes");
+            var alice = await db.Users.SingleAsync(u => u.UserName == "alice");
+            var bob = await db.Users.SingleAsync(u => u.UserName == "bob");
 
             db.Reviews.AddRange(
                 new Review
                 {
-                    RecipeId = pancakeId,
-                    Reviewer = "Alice",
+                    RecipeId = pancake.Id,
+                    UserId = alice.Id,
+                    Reviewer = alice.UserName,
                     Difficulty = 2,
                     Recommend = true,
                     Comment = "Very tasty!",
@@ -29,8 +33,9 @@ namespace ICookThis.Data.Seeders
                 },
                 new Review
                 {
-                    RecipeId = pancakeId,
-                    Reviewer = "Bob",
+                    RecipeId = pancake.Id,
+                    UserId = bob.Id,
+                    Reviewer = bob.UserName,
                     Difficulty = 3,
                     Recommend = false,
                     Comment = "Too sweet.",
@@ -39,8 +44,9 @@ namespace ICookThis.Data.Seeders
                 },
                 new Review
                 {
-                    RecipeId = mashId,
-                    Reviewer = "Carol",
+                    RecipeId = mash.Id,
+                    UserId = alice.Id,
+                    Reviewer = alice.UserName,
                     Difficulty = 1,
                     Recommend = true,
                     Comment = "Perfect.",
@@ -51,8 +57,6 @@ namespace ICookThis.Data.Seeders
 
             await db.SaveChangesAsync();
 
-            await new RecipeRepository(db).UpdateStatisticsAsync(pancakeId);
-            await new RecipeRepository(db).UpdateStatisticsAsync(mashId);
         }
     }
 }

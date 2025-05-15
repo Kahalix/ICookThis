@@ -83,7 +83,6 @@ namespace ICookThis.Modules.Recipes.Services
 
         public async Task<InstructionStepResponse> CreateAsync(int recipeId, NewInstructionStepRequest request)
         {
-            // 1) obsługa uploadu
             if (request.ImageFile != null)
             {
                 var uploads = Path.Combine(_env.WebRootPath, "images", "instructionsteps");
@@ -95,12 +94,10 @@ namespace ICookThis.Modules.Recipes.Services
                 request.Image = Path.Combine("images", "instructionsteps", fileName).Replace("\\", "/");
             }
 
-            // 2) mapowanie
             var stepEntity = _mapper.Map<InstructionStep>(request);
             stepEntity.RecipeId = recipeId;
             var createdStep = await _stepRepo.AddAsync(stepEntity);
 
-            // mapowanie i zapis składników kroku
             var siEntities = (request.StepIngredients
                           ?? Enumerable.Empty<StepIngredientRequest>())
                 .Select(siDto =>
@@ -122,7 +119,6 @@ namespace ICookThis.Modules.Recipes.Services
                            ?? throw new KeyNotFoundException($"Step {id} not found");
             var oldImagePath = existing.Image;
 
-            // 1) Usunięcie starego obrazka (jeśli RemoveImage == true lub nadchodzi nowy plik)
             var shouldRemoveOldImage = request.RemoveImage || request.ImageFile != null;
 
             if (shouldRemoveOldImage
@@ -139,7 +135,6 @@ namespace ICookThis.Modules.Recipes.Services
                 }
             }
 
-            // 2) Obsługa nowego pliku (jeśli jest)
             if (request.ImageFile != null)
             {
                 var uploads = Path.Combine(_env.WebRootPath, "images", "instructionsteps");
@@ -161,12 +156,10 @@ namespace ICookThis.Modules.Recipes.Services
             _mapper.Map(request, existing);
             await _stepRepo.UpdateAsync(existing);
 
-            // usuń stare składniki
             var oldSis = await _siRepo.GetByStepAsync(id);
             foreach (var osi in oldSis)
                 await _siRepo.DeleteAsync(osi.Id);
 
-            // dodaj nowe
             var newSis = (request.StepIngredients
                           ?? Enumerable.Empty<StepIngredientRequest>())
                 .Select(siDto =>
@@ -184,11 +177,9 @@ namespace ICookThis.Modules.Recipes.Services
 
         public async Task DeleteAsync(int id)
         {
-            // 1) Pobierz encję kroku
             var step = await _stepRepo.GetByIdAsync(id);
             if (step == null) return;
 
-            // 2) Usuń plik obrazka
             if (!string.IsNullOrEmpty(step.Image)
                 && !step.Image.EndsWith("default.jpg", StringComparison.OrdinalIgnoreCase))
             {
@@ -200,7 +191,6 @@ namespace ICookThis.Modules.Recipes.Services
                     File.Delete(fullPath);
             }
 
-            // 3) Usuń krok (cascade usunie też StepIngredients w bazie)
             await _stepRepo.DeleteAsync(id);
         }
     }

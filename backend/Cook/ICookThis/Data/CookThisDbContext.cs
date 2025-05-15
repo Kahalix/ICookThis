@@ -1,7 +1,9 @@
-﻿using ICookThis.Modules.Ingredients.Entities;
+﻿using ICookThis.Modules.Auth.Entities;
+using ICookThis.Modules.Ingredients.Entities;
 using ICookThis.Modules.Recipes.Entities;
 using ICookThis.Modules.Reviews.Entities;
 using ICookThis.Modules.Units.Entities;
+using ICookThis.Modules.Users.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Diagnostics.Internal;
@@ -21,7 +23,10 @@ namespace ICookThis.Data
         public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
         public DbSet<StepIngredient> StepIngredients { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<ReviewVote> ReviewVotes { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserToken> UserTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,7 +41,27 @@ namespace ICookThis.Data
                 .Property(u => u.Type)
                 .HasConversion<int>();
 
-            // Precyzje dla decimal
+            modelBuilder.Entity<Recipe>()
+              .Property(r => r.Status)
+              .HasConversion<int>();
+
+            modelBuilder.Entity<Recipe>()
+              .Property(r => r.AddedBy)
+              .HasConversion<int>();
+
+            modelBuilder.Entity<Review>()
+              .Property(r => r.Status)
+              .HasConversion<int>();
+
+            modelBuilder.Entity<User>()
+              .Property(u => u.Status)
+              .HasConversion<int>();
+
+            modelBuilder.Entity<User>()
+              .Property(u => u.Role)
+              .HasConversion<int>();
+
+            // Decimal precisions
             modelBuilder.Entity<StepIngredient>()
                 .Property(si => si.Fraction)
                 .HasPrecision(5, 4);
@@ -54,8 +79,46 @@ namespace ICookThis.Data
             modelBuilder.Entity<Recipe>()
                 .Property(r => r.RecommendPercentage)
                 .HasPrecision(5, 2);
+            modelBuilder.Entity<User>()
+                .Property(u => u.TrustFactor)
+                .HasPrecision(5, 2);
+            modelBuilder.Entity<User>()
+                .Property(u => u.ReviewTrustFactor)
+                .HasPrecision(5, 2);
+            modelBuilder.Entity<Recipe>()
+                .Property(r => r.DefaultQty)
+                .HasPrecision(9, 3);
 
-            // Relacje (bez nawigacyjnych kolekcji po stronie 'one')
+            // ReviewVote: composite PK
+            modelBuilder.Entity<ReviewVote>()
+              .HasKey(rv => new { rv.ReviewId, rv.UserId });
+
+            modelBuilder.Entity<ReviewVote>()
+              .HasOne<Review>()
+              .WithMany()
+              .HasForeignKey(rv => rv.ReviewId)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ReviewVote>()
+              .HasOne<User>()
+              .WithMany()
+              .HasForeignKey(rv => rv.UserId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+            // --- Recipe -> User (AddedByUserId)
+            modelBuilder.Entity<Recipe>()
+              .HasOne<User>()
+              .WithMany()
+              .HasForeignKey(r => r.UserId)
+              .OnDelete(DeleteBehavior.Restrict);
+
+            // --- Review -> User (Reviewer)
+            modelBuilder.Entity<Review>()
+              .HasOne<User>()
+              .WithMany()
+              .HasForeignKey(r => r.UserId)
+              .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<InstructionStep>()
                 .HasOne<Recipe>()
                 .WithMany()
@@ -104,7 +167,12 @@ namespace ICookThis.Data
                 .HasForeignKey(rv => rv.RecipeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // 1) Unikalność nazw
+            modelBuilder.Entity<UserToken>()
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey(ut => ut.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Ingredient>()
                 .HasIndex(i => i.Name)
                 .IsUnique();
@@ -114,9 +182,27 @@ namespace ICookThis.Data
             modelBuilder.Entity<Recipe>()
                 .HasIndex(r => new { r.Name, r.DishType })
                 .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.PhoneNumber)
+                .IsUnique()
+                .HasFilter("[PhoneNumber] IS NOT NULL");
+            modelBuilder.Entity<ReviewVote>()
+                .HasIndex(rv => new { rv.ReviewId, rv.UserId })
+                .IsUnique();
+            modelBuilder.Entity<Review>()
+                .HasIndex(rv => new { rv.RecipeId, rv.UserId })
+                .IsUnique();
 
-            // 2) Check-constraints na wartości logiczne
-
+            modelBuilder.Entity<User>()
+                .ToTable(tb => tb.HasCheckConstraint(
+                    "CK_User_Password_Length",
+                    "LEN([Password]) >= 8"));
             modelBuilder.Entity<Unit>()
                 .ToTable(tb => tb.HasCheckConstraint(
                     "CK_Unit_Type_Range",
@@ -161,19 +247,11 @@ namespace ICookThis.Data
                 "CK_Review_Rating_Range",
                 "[Rating] >= 1 AND [Rating] <= 5"));
 
-            modelBuilder.Entity<Recipe>(entity =>
-            {
-                entity.ToTable(tb => tb.HasCheckConstraint(
-                    "CK_Recipe_DefaultQty_Positive",
-                    "[DefaultQty] > 0"));
-            });
 
-
-
-            // 3) Unikalny StepOrder w obrębie przepisu
             modelBuilder.Entity<InstructionStep>()
                 .HasIndex(s => new { s.RecipeId, s.StepOrder })
                 .IsUnique();
+
 
         }
     }

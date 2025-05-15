@@ -10,85 +10,170 @@ using ICookThis.Modules.Ingredients.Services;
 using ICookThis.Modules.Ingredients.Repositories;
 using ICookThis.Data;
 using Azure;
+using ICookThis.Modules.jwt.Services;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using ICookThis.Modules.Users.Repositories;
+using ICookThis.Modules.Users.Entities;
+using Microsoft.AspNetCore.Identity;
+using ICookThis.Modules.Users.Services;
+using ICookThis.Utils.Email;
+using ICookThis.Shared.BackgroundServices;
+using ICookThis.Modules.Auth.Services;
+using ICookThis.Modules.Auth.Repositories;
+using Microsoft.OpenApi.Models;
 
-// 0. Prepare builder options with custom WebRootPath
 var options = new WebApplicationOptions
 {
     ContentRootPath = Directory.GetCurrentDirectory(),
     WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")
 };
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(options);
 
-// 1. Add DbContext
+// 1. For Swagger and endpoint explorer
+builder.Services.AddEndpointsApiExplorer();
+
+// 2. SwaggerGen (Swashbuckle)
+builder.Services.AddSwaggerGen(cfg =>
+{
+    cfg.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "ICookThis API",
+        Version = "v1"
+    });
+
+    // JWT Bearer w Swagger UI
+    cfg.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "W polu wpisz: Bearer {token}",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT"
+    });
+    cfg.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id   = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+// 3. Database
 var conn = builder.Configuration.GetConnectionString("DefaultConnection")
            ?? throw new InvalidOperationException("Connection string not found");
 builder.Services.AddDbContext<CookThisDbContext>(opt =>
     opt.UseSqlServer(conn));
 
-
-// 2. Add AutoMapper (scans for profiles in all assemblies)
+// 4. AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// 3. Register Units module
+// 5. Register modules (Units, Ingredients, Recipes, Reviews, Users, Auth…)
 builder.Services.AddScoped<IUnitRepository, UnitRepository>();
 builder.Services.AddScoped<IUnitService, UnitService>();
 
-// 4. Register Ingredients module
 builder.Services.AddScoped<IIngredientRepository, IngredientRepository>();
 builder.Services.AddScoped<IIngredientService, IngredientService>();
 
-// 5. Register Recipes module
 builder.Services.AddScoped<IRecipeRepository, RecipeRepository>();
 builder.Services.AddScoped<IRecipeService, RecipeService>();
-
 builder.Services.AddScoped<IRecipeIngredientRepository, RecipeIngredientRepository>();
 builder.Services.AddScoped<IRecipeIngredientService, RecipeIngredientService>();
-
 builder.Services.AddScoped<IInstructionStepRepository, InstructionStepRepository>();
 builder.Services.AddScoped<IInstructionStepService, InstructionStepService>();
-
 builder.Services.AddScoped<IStepIngredientRepository, StepIngredientRepository>();
 builder.Services.AddScoped<IStepIngredientService, StepIngredientService>();
 
-// 6. Register Reviews module
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 
-// 6.1 Register Moderation module
-builder.Services.AddHttpClient("Moderation", client =>
-{
-    client.BaseAddress = new Uri("http://moderation:8001");
-    client.Timeout = TimeSpan.FromSeconds(5);
-});
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
-// 6.2 Register WebRoot wwwroot
-builder.WebHost
-       .UseWebRoot("wwwroot");
+builder.Services.AddScoped<IMailService, MailService>();
+builder.Services.AddScoped<IEmailBuilder, EmailBuilder>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddHostedService<PendingCleanupService>();
 
+// JWT
+builder.Services.AddSingleton<IJwtService, JwtService>();
+var jwtConfig = builder.Configuration.GetSection("Jwt");
+var keyBytes = Encoding.UTF8.GetBytes(jwtConfig["Key"]!);
 
-// 7. OpenAPI + Controllers
-builder.Services.AddOpenApi();
+builder.Services
+    .AddAuthentication(opt =>
+    {
+        opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(opt =>
+    {
+        opt.RequireHttpsMetadata = false;
+        opt.SaveToken = true;
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = jwtConfig["Issuer"],
+            ValidateAudience = true,
+            ValidAudience = jwtConfig["Audience"],
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+builder.Services.AddAuthorization();
+
+// Controllers + JSON enumy
 builder.Services
     .AddControllers()
-    .AddJsonOptions(options =>
+    .AddJsonOptions(opts =>
     {
-        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
 // CORS
-builder.Services.AddCors(options =>
+builder.Services.AddCors(opts =>
 {
-    options.AddPolicy("AllowFrontend",
-        policy => policy
-            .WithOrigins("http://localhost:5173", "http://www.localhost:5173", "http://localhost:5174", "http://www.localhost:5174")
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    opts.AddPolicy("AllowFrontend", policy =>
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "http://www.localhost:5173",
+                "http://localhost:5174",
+                "http://www.localhost:5174")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
 });
 
 var app = builder.Build();
 
-// 8. Automatyczne migracje (dev only – usunąć EnsureDeleted w prod)
+// --- Pipeline ---
+
+// Swagger UI (only in dev)
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ICookThis API V1");
+        // c.RoutePrefix = string.Empty;
+    });
+}
+
+// Automatic migrations (dev only)
 const int maxAttempts = 12;
 for (int attempt = 1; attempt <= maxAttempts; attempt++)
 {
@@ -98,9 +183,7 @@ for (int attempt = 1; attempt <= maxAttempts; attempt++)
         var db = scope.ServiceProvider.GetRequiredService<CookThisDbContext>();
         app.Logger.LogInformation("Próba migracji {Attempt}/{Max}…", attempt, maxAttempts);
 
-        // usuń starą bazę i stwórz od nowa
-        //db.Database.EnsureDeleted();
-
+        //db.Database.EnsureDeleted(); // dev only
         db.Database.Migrate();
         app.Logger.LogInformation("Migracje zakończone sukcesem.");
         break;
@@ -109,27 +192,23 @@ for (int attempt = 1; attempt <= maxAttempts; attempt++)
     {
         app.Logger.LogWarning(ex, "Migracja nieudana (próba {Attempt}). Za 5s ponawiamy…", attempt);
         if (attempt == maxAttempts)
-            throw; // po ostatniej próbie wyrzuć, bo chyba coś naprawdę jest nie tak
+            throw;
         await Task.Delay(TimeSpan.FromSeconds(5));
     }
 }
 
-// 8.1 Seed danych
-using var scopeS = app.Services.CreateScope();
-var dbS = scopeS.ServiceProvider.GetRequiredService<CookThisDbContext>();
-await DbSeeder.SeedAsync(dbS);
+// Data seed
+using (var scopeS = app.Services.CreateScope())
+{
+    var dbS = scopeS.ServiceProvider.GetRequiredService<CookThisDbContext>();
+    await DbSeeder.SeedAsync(dbS);
+}
 
-// 9. Pipeline
-
-// CORS 
 app.UseCors("AllowFrontend");
-
 app.UseStaticFiles();
-
-app.MapOpenApi();
-
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

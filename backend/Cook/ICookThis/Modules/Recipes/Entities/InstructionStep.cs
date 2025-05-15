@@ -11,9 +11,6 @@ namespace ICookThis.Modules.Recipes.Entities
         [MaxLength(200)]
         public string? Image { get; set; }
 
-        /// <summary>
-        /// Step order
-        /// </summary>
         public int StepOrder { get; set; }
 
         /// <summary>

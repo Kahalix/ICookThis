@@ -10,6 +10,7 @@ namespace ICookThis.Data.Seeders
         public async Task SeedAsync(CookThisDbContext db)
         {
             if (await db.Ingredients.AnyAsync()) return;
+
             db.Ingredients.AddRange(
                 new Ingredient { Name = "Flour" },
                 new Ingredient { Name = "Water" },
@@ -17,6 +18,7 @@ namespace ICookThis.Data.Seeders
                 new Ingredient { Name = "Milk" },
                 new Ingredient { Name = "Sugar" }
             );
+
             await db.SaveChangesAsync();
         }
     }

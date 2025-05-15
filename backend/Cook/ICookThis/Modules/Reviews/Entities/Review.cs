@@ -9,6 +9,8 @@ namespace ICookThis.Modules.Reviews.Entities
 
         public int RecipeId { get; set; }
 
+        public int UserId { get; set; }
+
         [Required, MaxLength(100)]
         public required string Reviewer { get; set; }
 
@@ -24,6 +26,12 @@ namespace ICookThis.Modules.Reviews.Entities
 
         [Range(1, int.MaxValue)]
         public int PreparationTimeMinutes { get; set; }
+
+        public ReviewStatus Status { get; set; } = ReviewStatus.Pending;
+
+        public int AgreeCount { get; set; }
+
+        public int DisagreeCount { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }

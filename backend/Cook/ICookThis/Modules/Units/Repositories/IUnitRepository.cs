@@ -12,6 +12,8 @@ namespace ICookThis.Modules.Units.Repositories
         Task<Unit> UpdateAsync(Unit unit);
         Task DeleteAsync(int id);
         Task<IEnumerable<Unit>> GetByIdsAsync(IEnumerable<int> ids);
+        Task SetTrustFactorAsync(int userId, decimal trustFactor);
+
 
     }
 }

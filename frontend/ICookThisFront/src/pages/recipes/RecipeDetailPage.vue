@@ -52,10 +52,8 @@ const route = useRoute()
 const router = useRouter()
 const id = Number(route.params.id)
 
-// fetch
 const { loading, data: recipe, error, load } = useFetchRecipe()
 
-// delete
 const {
   loading: deleteLoading,
   error: deleteError,
@@ -69,7 +67,6 @@ function goBack() {
 }
 
 function onDelete() {
-  // recipe.value może być null
   if (!recipe.value) return
 
   const name = recipe.value.name
@@ -78,7 +75,6 @@ function onDelete() {
   }
 }
 
-// po usunięciu przekieruj
 watch(deleteSuccess, (val: boolean) => {
   if (val) {
     router.push({ name: 'RecipeList' })

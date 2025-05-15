@@ -23,7 +23,6 @@ namespace ICookThis.Modules.Ingredients.Repositories
 
             IQueryable<Ingredient> query = _db.Ingredients;
 
-            // opcjonalne filtrowanie po nazwie
             if (!string.IsNullOrWhiteSpace(search))
             {
                 var term = search.Trim();

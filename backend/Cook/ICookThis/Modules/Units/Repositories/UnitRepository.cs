@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using ICookThis.Data;
 using ICookThis.Modules.Units.Entities;
+using ICookThis.Modules.Users.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ICookThis.Modules.Units.Repositories
@@ -43,6 +44,14 @@ namespace ICookThis.Modules.Units.Repositories
             return await _db.Units
                             .Where(u => ids.Contains(u.Id))
                             .ToListAsync();
+        }
+
+        public async Task SetTrustFactorAsync(int userId, decimal trustFactor)
+        {
+            var u = new User { Id = userId };
+            _db.Users.Attach(u);
+            u.TrustFactor = trustFactor;
+            await _db.SaveChangesAsync();
         }
     }
 }

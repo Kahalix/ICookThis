@@ -9,7 +9,6 @@ namespace ICookThis.Modules.Recipes.Dtos
 
         public int RecipeId { get; set; }
         public required IngredientResponse Ingredient { get; set; }
-
         public decimal Qty { get; set; }
         public required UnitResponse Unit { get; set; }
     }

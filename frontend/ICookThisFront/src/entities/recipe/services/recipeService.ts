@@ -1,19 +1,12 @@
-// src/entities/recipe/services/recipeService.ts
-
 import { api } from '@shared/lib/api'
 import type { PagedResult } from '@/shared/lib/types'
 import type { RecipeResponse, NewRecipeRequest, UpdateRecipeRequest } from '../models/recipeModel' // lub '..' dzięki index.ts
 import type { AxiosResponse } from 'axios'
 
-// formatujemy liczby na przecinki
 function formatNumberForApi(value: number): string {
-  // zamieniamy kropkę na przecinek
   return value.toString().replace('.', ',')
 }
 
-/**
- * Pobiera paginowaną listę przepisów.
- */
 export function fetchRecipes(
   page = 1,
   pageSize = 10,
@@ -30,9 +23,6 @@ export function fetchRecipes(
     .then((r: AxiosResponse<PagedResult<RecipeResponse>>) => r.data)
 }
 
-/**
- * Pobiera pojedynczy przepis, opcjonalnie skalując ilości.
- */
 export function fetchRecipe(id: number, scale?: number): Promise<RecipeResponse> {
   const params = scale != null ? { scale } : {}
   return api
@@ -40,10 +30,6 @@ export function fetchRecipe(id: number, scale?: number): Promise<RecipeResponse>
     .then((r: AxiosResponse<RecipeResponse>) => r.data)
 }
 
-/**
- * Tworzy nowy przepis.
- * @param request Obiekt NewRecipeRequest (z opcjonalnym imageFile)
- */
 export function createRecipe(
   request: NewRecipeRequest & { imageFile?: File },
 ): Promise<RecipeResponse> {
@@ -55,14 +41,12 @@ export function createRecipe(
   form.append('Description', request.description)
   if (request.imageFile) form.append('ImageFile', request.imageFile)
 
-  // składniki
   request.ingredients.forEach((ing, i) => {
     form.append(`Ingredients[${i}].IngredientId`, String(ing.ingredientId))
     form.append(`Ingredients[${i}].Qty`, formatNumberForApi(ing.qty))
     form.append(`Ingredients[${i}].UnitId`, String(ing.unitId))
   })
 
-  // kroki – wszystkie jako NewInstructionStepRequest
   request.steps.forEach((st, i) => {
     form.append(`Steps[${i}].StepOrder`, String(st.stepOrder))
     form.append(`Steps[${i}].TemplateText`, st.templateText)
@@ -80,11 +64,6 @@ export function createRecipe(
     .then((r) => r.data)
 }
 
-/**
- * Aktualizuje istniejący przepis.
- * @param id ID przepisu
- * @param request Obiekt UpdateRecipeRequest (z opcjonalnym imageFile)
- */
 export function updateRecipe(
   id: number,
   request: UpdateRecipeRequest & { imageFile?: File },
@@ -96,18 +75,15 @@ export function updateRecipe(
   if (request.dishType) form.append('DishType', request.dishType)
   form.append('Description', request.description)
 
-  // flaga usunięcia głównego obrazka
   if (request.removeImage) form.append('RemoveImage', 'true')
   if (request.imageFile) form.append('ImageFile', request.imageFile)
 
-  // składniki (nadpisanie)
   request.ingredients.forEach((ing, i) => {
     form.append(`Ingredients[${i}].IngredientId`, String(ing.ingredientId))
     form.append(`Ingredients[${i}].Qty`, formatNumberForApi(ing.qty))
     form.append(`Ingredients[${i}].UnitId`, String(ing.unitId))
   })
 
-  // kroki – UpdateInstructionStepRequest
   request.steps.forEach((st, i) => {
     form.append(`Steps[${i}].StepOrder`, String(st.stepOrder))
     form.append(`Steps[${i}].TemplateText`, st.templateText)
@@ -128,9 +104,6 @@ export function updateRecipe(
     .then((r) => r.data)
 }
 
-/**
- * Usuwa przepis.
- */
 export function deleteRecipe(id: number): Promise<void> {
   return api.delete<void>(`/recipes/${id}`).then(() => {})
 }
