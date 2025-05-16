@@ -320,9 +320,10 @@ namespace ICookThis.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reviews_RecipeId",
+                name: "IX_Reviews_RecipeId_UserId",
                 table: "Reviews",
-                column: "RecipeId");
+                columns: new[] { "RecipeId", "UserId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_UserId",

@@ -10,6 +10,8 @@ using ICookThis.Modules.Reviews.Repositories;
 using ICookThis.Modules.Users.Entities;
 using ICookThis.Modules.Users.Repositories;
 using ICookThis.Shared.Dtos;
+using ICookThis.Utils.Email;
+
 
 namespace ICookThis.Modules.Reviews.Services
 {
@@ -19,17 +21,26 @@ namespace ICookThis.Modules.Reviews.Services
         private readonly IRecipeRepository _recipeRepo;
         private readonly IUserRepository _userRepo;
         private readonly IMapper _mapper;
+        private readonly IMailService _mail;
+        private readonly IEmailBuilder _emails;
+        private readonly IConfiguration _config;
 
         public ReviewService(
             IReviewRepository repo,
             IRecipeRepository recipeRepo,
             IUserRepository userRepo,
-            IMapper mapper)
+            IMapper mapper,
+            IMailService mail,
+            IEmailBuilder emails,
+            IConfiguration config)
         {
             _repo = repo;
             _recipeRepo = recipeRepo;
             _userRepo = userRepo;
             _mapper = mapper;
+            _mail = mail;
+            _emails = emails;
+            _config = config;
         }
 
         public async Task<PagedResult<ReviewResponse>> GetPagedByRecipeAsync(
@@ -112,11 +123,31 @@ namespace ICookThis.Modules.Reviews.Services
 
         public async Task<ReviewResponse> CreateAsync(NewReviewRequest dto, int userId)
         {
+            var user = await _userRepo.GetByIdAsync(userId)
+                       ?? throw new KeyNotFoundException($"User {userId} not found");
+
+            if (user.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can create reviews.");
+
             var entity = _mapper.Map<Review>(dto);
             entity.UserId = userId;
             var created = await _repo.AddAsync(entity);
 
             await RecalculateRecipeAndAuthorStatsAsync(created.RecipeId);
+
+            var recipe = await _recipeRepo.GetByIdAsync(created.RecipeId);
+            if (recipe != null)
+            {
+
+                var recipeUrl = $"{_config["App:FrontendUrl"]}/recipes/{recipe.Id}";
+                var (subject, body) = _emails.BuildReviewCreatedEmail(
+                    recipe.Name,
+                    created.Reviewer,
+                    recipeUrl);
+                await _mail.SendAsync(user.Email, subject, body);
+            }
+            
+
             return _mapper.Map<ReviewResponse>(created);
         }
 
@@ -127,7 +158,11 @@ namespace ICookThis.Modules.Reviews.Services
 
             var u = await _userRepo.GetByIdAsync(currentUserId)
                     ?? throw new KeyNotFoundException("User not found");
-            bool isStaff = u.Role == UserRole.Admin || u.Role == UserRole.Moderator;
+
+            if (u.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can update reviews.");
+
+            bool isStaff = u.Role == UserRole.Admin || (u.Role == UserRole.Moderator);
             bool isOwner = existing.UserId == currentUserId;
             if (!isStaff && !isOwner)
                 throw new UnauthorizedAccessException("No permission");
@@ -147,6 +182,10 @@ namespace ICookThis.Modules.Reviews.Services
 
             var u = await _userRepo.GetByIdAsync(currentUserId)
                     ?? throw new KeyNotFoundException("User not found");
+
+            if (u.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can update reviews.");
+
             bool isStaff = u.Role == UserRole.Admin || u.Role == UserRole.Moderator;
             bool isOwner = existing.UserId == currentUserId;
             if (!isStaff && !isOwner)
@@ -162,14 +201,32 @@ namespace ICookThis.Modules.Reviews.Services
             var r = await _repo.GetByIdAsync(id)
                    ?? throw new KeyNotFoundException($"Review {id} not found");
             var u = await _userRepo.GetByIdAsync(currentUserId)
-                    ?? throw new KeyNotFoundException("User not found");
-            if (u.Role != UserRole.Admin && u.Role != UserRole.Moderator)
-                throw new UnauthorizedAccessException("Only Admin/Moderator can change status");
+                   ?? throw new KeyNotFoundException("User not found");
+
+            if (!(u.Role == UserRole.Admin || (u.Role == UserRole.Moderator && u.Status == UserStatus.Approved)))
+                throw new UnauthorizedAccessException("Only Admins or Approved Moderators can change status");
 
             r.Status = newStatus;
             var updated = await _repo.UpdateAsync(r);
+
+            await RecalculateRecipeAndAuthorStatsAsync(r.RecipeId);
+
+            var reviewer = await _userRepo.GetByIdAsync(r.UserId);
+            if (reviewer != null && reviewer.Status == UserStatus.Approved)
+            {
+                var reviewUrl = $"{_config["App:FrontendUrl"]}/recipes/{r.RecipeId}#review-{r.Id}";
+                var (sub, body) = _emails.BuildReviewStatusChangedEmail(
+                    reviewer.UserName,
+                    r.Id,
+                    newStatus,
+                    reviewUrl
+                );
+                await _mail.SendAsync(reviewer.Email, sub, body);
+            }
+
             return _mapper.Map<ReviewResponse>(updated);
         }
+
 
         private async Task RecalculateRecipeAndAuthorStatsAsync(int recipeId)
         {

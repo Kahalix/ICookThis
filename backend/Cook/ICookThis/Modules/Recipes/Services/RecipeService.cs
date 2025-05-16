@@ -14,6 +14,7 @@ using ICookThis.Modules.Users.Entities;
 using ICookThis.Modules.Users.Repositories;
 using ICookThis.Shared.Dtos;
 using ICookThis.Utils;
+using ICookThis.Utils.Email;
 
 namespace ICookThis.Modules.Recipes.Services
 {
@@ -28,6 +29,9 @@ namespace ICookThis.Modules.Recipes.Services
         private readonly IIngredientRepository _ingredientRepo;
         private readonly IUnitRepository _unitRepo;
         private readonly IWebHostEnvironment _env;
+        private readonly IMailService _mail;
+        private readonly IEmailBuilder _emails;
+        private readonly IConfiguration _config;
 
         public RecipeService(
             IRecipeRepository recipeRepo,
@@ -38,7 +42,10 @@ namespace ICookThis.Modules.Recipes.Services
             IIngredientRepository ingredientRepo,
             IUnitRepository unitRepo,
             IMapper mapper,
-            IWebHostEnvironment env)
+            IWebHostEnvironment env,
+            IMailService mail,
+            IEmailBuilder emails,
+            IConfiguration config)
         {
             _recipeRepo = recipeRepo;
             _userRepo = userRepo;
@@ -49,6 +56,9 @@ namespace ICookThis.Modules.Recipes.Services
             _unitRepo = unitRepo;
             _mapper = mapper;
             _env = env;
+            _mail = mail;
+            _emails = emails;
+            _config = config;
         }
         public async Task<PagedResult<RecipeListResponse>> GetPagedAsync(
             int page, int pageSize, string? search,
@@ -288,6 +298,9 @@ namespace ICookThis.Modules.Recipes.Services
             var user = await _userRepo.GetByIdAsync(userId)
                        ?? throw new KeyNotFoundException($"User {userId} not found");
 
+            if (user.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can create recipes.");
+
             var entity = _mapper.Map<Recipe>(request);
             entity.UserId = userId;
 
@@ -347,6 +360,12 @@ namespace ICookThis.Modules.Recipes.Services
                 }
             }
 
+
+            var recipeUrl = $"{_config["App:FrontendUrl"]}/recipes/{created.Id}";
+            var (sub, body) = _emails.BuildRecipeCreatedEmail(
+                user.UserName, created.Name, recipeUrl);
+            await _mail.SendAsync(user.Email, sub, body);
+
             return await GetByIdAsync(created.Id, userId, null);
         }
 
@@ -357,6 +376,10 @@ namespace ICookThis.Modules.Recipes.Services
 
             var user = await _userRepo.GetByIdAsync(userId)
                        ?? throw new KeyNotFoundException($"User {userId} not found");
+
+            if (user.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can create recipes.");
+
             bool isOwner = existing.UserId == userId;
             bool isStaff = user.Role == UserRole.Admin || user.Role == UserRole.Moderator;
             if (!isOwner && !isStaff)
@@ -456,6 +479,9 @@ namespace ICookThis.Modules.Recipes.Services
             var user = await _userRepo.GetByIdAsync(userId)
                        ?? throw new KeyNotFoundException($"User {userId} not found");
 
+            if (user.Status != UserStatus.Approved)
+                throw new UnauthorizedAccessException("Only approved users can update reviews.");
+
             bool isStaff = user.Role == UserRole.Admin || user.Role == UserRole.Moderator;
             bool isOwner = recipe.UserId == userId;
 
@@ -478,6 +504,20 @@ namespace ICookThis.Modules.Recipes.Services
             }
 
             await _recipeRepo.UpdateAsync(recipe);
+
+            if (user?.Role == UserRole.Admin || user?.Role == UserRole.Moderator)
+            {
+                var author = await _userRepo.GetByIdAsync(recipe.UserId);
+                if (author != null && author.Status == UserStatus.Approved)
+                {
+                    var recipeUrl = $"{_config["App:FrontendUrl"]}/recipes/{recipeId}";
+                    var (sub, body) = _emails.BuildRecipeStatusChangedEmail(
+                        author.UserName, recipe.Name, newStatus, recipeUrl
+                    );
+                    await _mail.SendAsync(author.Email, sub, body);
+                }
+            }
+
             return await GetByIdAsync(recipeId, userId, null);
         }
 

@@ -98,6 +98,9 @@ builder.Services.AddScoped<IStepIngredientService, StepIngredientService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 
+builder.Services.AddScoped<IReviewVoteRepository, ReviewVoteRepository>();
+builder.Services.AddScoped<IReviewVoteService, ReviewVoteService>();
+
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();

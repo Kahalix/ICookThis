@@ -145,21 +145,14 @@ namespace ICookThis.Modules.Reviews.Repositories
                 return Array.Empty<Review>();
 
             return await _db.Reviews
-                            .Where(r => recipeIds.Contains(r.RecipeId))
-                            .ToListAsync();
+                   .Where(r => recipeIds.Contains(r.RecipeId) && r.Status == ReviewStatus.Approved)
+                   .ToListAsync();
         }
 
         public async Task<IEnumerable<Review>> GetByUserIdAsync(int userId)
         {
             return await _db.Reviews
                             .Where(r => r.UserId == userId)
-                            .ToListAsync();
-        }
-
-        public async Task<IEnumerable<ReviewVote>> GetByReviewIdsAsync(IEnumerable<int> reviewIds)
-        {
-            return await _db.Set<ReviewVote>()
-                            .Where(v => reviewIds.Contains(v.ReviewId))
                             .ToListAsync();
         }
     }

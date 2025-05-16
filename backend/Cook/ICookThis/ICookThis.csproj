@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Shared\Helpers\" />
     <Folder Include="wwwroot\images\instructionsteps\" />
     <Folder Include="wwwroot\images\recipes\" />
   </ItemGroup>

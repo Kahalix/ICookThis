@@ -123,7 +123,7 @@ namespace ICookThis.Modules.Users.Controllers
             return NoContent();
         }
 
-        [HttpPatch("{id}/status"), Authorize(Roles = "Admin,Moderator")]
+        [HttpPatch("{id}/status"), Authorize]
         public async Task<ActionResult<UserResponse>> ChangeStatus(
             int id,
             [FromBody] ChangeUserStatusRequest dto)

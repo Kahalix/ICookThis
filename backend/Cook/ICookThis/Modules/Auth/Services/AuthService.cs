@@ -66,7 +66,7 @@ namespace ICookThis.Modules.Auth.Services
             await _authRepo.AddTokenAsync(token);
 
             var confirmUrl = $"{_config["App:FrontendUrl"]}/confirm-email?token={token.Id}";
-            var (subject, body) = _emailBuilder.BuildConfirmationEmail(confirmUrl);
+            var (subject, body) = _emailBuilder.BuildConfirmationEmail(user.UserName, confirmUrl);
             await _mail.SendAsync(user.Email, subject, body);
         }
 
@@ -123,7 +123,7 @@ namespace ICookThis.Modules.Auth.Services
             await _authRepo.AddTokenAsync(token);
 
             var resetUrl = $"{_config["App:FrontendUrl"]}/reset-password?token={token.Id}";
-            var (subject, body) = _emailBuilder.BuildPasswordResetEmail(resetUrl);
+            var (subject, body) = _emailBuilder.BuildPasswordResetEmail(user.UserName, resetUrl);
             await _mail.SendAsync(user.Email, subject, body);
         }
 

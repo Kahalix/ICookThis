@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Azure;
 using ICookThis.Modules.Users.Dtos;
 using ICookThis.Modules.Users.Entities;
 using ICookThis.Modules.Users.Repositories;
 using ICookThis.Shared.Dtos;
+using ICookThis.Utils.Email;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ICookThis.Modules.Users.Services
 {
@@ -16,17 +19,26 @@ namespace ICookThis.Modules.Users.Services
         private readonly IMapper _mapper;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IWebHostEnvironment _env;
+        private readonly IMailService _mail;
+        private readonly IEmailBuilder _emailBuilder;
+        private readonly IConfiguration _config;
 
         public UserService(
             IUserRepository repo,
             IMapper mapper,
             IPasswordHasher<User> passwordHasher,
-            IWebHostEnvironment env)
+            IWebHostEnvironment env,
+            IMailService mail,
+            IEmailBuilder emailBuilder,
+            IConfiguration config)
         {
             _repo = repo;
             _mapper = mapper;
             _passwordHasher = passwordHasher;
             _env = env;
+            _mail = mail;
+            _emailBuilder = emailBuilder;
+            _config = config;
         }
 
         public async Task<PagedResult<UserResponse>> GetPagedAsync(
@@ -80,6 +92,7 @@ namespace ICookThis.Modules.Users.Services
         {
             var current = await _repo.GetByIdAsync(currentUserId)
                           ?? throw new KeyNotFoundException($"User {currentUserId} not found");
+
             if (current.Role != UserRole.Admin)
                 throw new UnauthorizedAccessException("Only Admin can create users");
 
@@ -90,7 +103,12 @@ namespace ICookThis.Modules.Users.Services
             entity.CreatedAt = DateTime.UtcNow;
 
             var created = await _repo.AddAsync(entity);
-            return _mapper.Map<UserResponse>(created);
+            var userDto = _mapper.Map<UserResponse>(created);
+
+            var (subject, body) = _emailBuilder.BuildAdminCreatedUserEmail(created.UserName);
+            await _mail.SendAsync(created.Email, subject, body);
+            
+            return userDto;
         }
 
         public async Task<UserResponse> UpdateAsync(int id, UpdateUserRequest dto, int currentUserId)
@@ -100,9 +118,12 @@ namespace ICookThis.Modules.Users.Services
 
             var current = await _repo.GetByIdAsync(currentUserId)
                          ?? throw new KeyNotFoundException($"User {currentUserId} not found");
+
+            EnsureApproved(current);
+
             bool isSelf = id == currentUserId;
-            bool isStaff = current.Role == UserRole.Admin || current.Role == UserRole.Moderator;
-            if (!isSelf && !isStaff)
+            bool isAdmin = current.Role == UserRole.Admin;
+            if (!isSelf && !isAdmin)
                 throw new UnauthorizedAccessException("You do not have permission to update this user");
 
             if (dto.ProfileImageFile != null)
@@ -189,33 +210,68 @@ namespace ICookThis.Modules.Users.Services
         public async Task<UserResponse> ChangeStatusAsync(int id, ChangeUserStatusRequest dto, int currentUserId)
         {
             var current = await _repo.GetByIdAsync(currentUserId)
-                        ?? throw new KeyNotFoundException($"User {currentUserId} not found");
-            if (current.Role != UserRole.Admin && current.Role != UserRole.Moderator)
-                throw new UnauthorizedAccessException("Only Admin/Moderator can change status");
+                          ?? throw new KeyNotFoundException($"User {currentUserId} not found");
 
-            await _repo.SetStatusAsync(id, dto.Status);
+            EnsureApproved(current);
+
             var user = await _repo.GetByIdAsync(id)
                        ?? throw new KeyNotFoundException($"User {id} not found");
-            return _mapper.Map<UserResponse>(user);
+
+            bool isAdminOrMod = current.Role == UserRole.Admin || current.Role == UserRole.Moderator;
+            bool isOwner = id == currentUserId;
+
+            if (isAdminOrMod)
+            {
+                if (user.Role == UserRole.Admin)
+                    throw new UnauthorizedAccessException("You cannot change the status of an Admin user");
+
+                await _repo.SetStatusAsync(id, dto.Status);
+            }
+            else if (isOwner && dto.Status == UserStatus.Deleted)
+            {
+                await _repo.SetStatusAsync(id, UserStatus.Deleted);
+            }
+            else
+            {
+                throw new UnauthorizedAccessException("You do not have permission to change this user’s status");
+            }
+
+
+            var updated = await _repo.GetByIdAsync(id)
+                          ?? throw new KeyNotFoundException($"User {id} not found");
+            var resultDto = _mapper.Map<UserResponse>(updated);
+
+            var (subject, body) = _emailBuilder.BuildStatusChangedEmail(updated.UserName, updated.Status);
+            await _mail.SendAsync(updated.Email, subject, body);
+
+            return resultDto;
         }
+
 
         public async Task<UserResponse> ChangeRoleAsync(int id, ChangeUseRoleRequest dto, int currentUserId)
         {
             var current = await _repo.GetByIdAsync(currentUserId)
                         ?? throw new KeyNotFoundException($"User {currentUserId} not found");
+
             if (current.Role != UserRole.Admin)
                 throw new UnauthorizedAccessException("Only Admin can change role");
 
             await _repo.SetRoleAsync(id, dto.Role);
-            var user = await _repo.GetByIdAsync(id)
-                       ?? throw new KeyNotFoundException($"User {id} not found");
-            return _mapper.Map<UserResponse>(user);
+            var updated = await _repo.GetByIdAsync(id)
+                          ?? throw new KeyNotFoundException($"User {id} not found");
+            var resultDto = _mapper.Map<UserResponse>(updated);
+
+            var (subject, body) = _emailBuilder.BuildRoleChangedEmail(updated.UserName, updated.Role);
+            await _mail.SendAsync(updated.Email, subject, body);
+
+            return resultDto;
         }
 
         public async Task DeleteAsync(int id, int currentUserId)
         {
             var current = await _repo.GetByIdAsync(currentUserId)
                           ?? throw new KeyNotFoundException($"User {currentUserId} not found");
+
             if (current.Role != UserRole.Admin)
                 throw new UnauthorizedAccessException("Only Admin can delete users");
 
@@ -243,6 +299,15 @@ namespace ICookThis.Modules.Users.Services
             await _repo.DeleteAsync(id);
         }
 
-    
+        private void EnsureApproved(User user)
+        {
+            if (user.Status != UserStatus.Approved
+                && user.Role is not UserRole.Admin)
+            {
+                throw new UnauthorizedAccessException("Only approved users can perform this operation.");
+            }
+        }
+
+
     }
 }

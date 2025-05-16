@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ICookThis.Migrations
 {
     [DbContext(typeof(CookThisDbContext))]
-    [Migration("20250514202112_InitialCreate")]
+    [Migration("20250515223527_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -289,9 +289,10 @@ namespace ICookThis.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RecipeId");
-
                     b.HasIndex("UserId");
+
+                    b.HasIndex("RecipeId", "UserId")
+                        .IsUnique();
 
                     b.ToTable("Reviews", t =>
                         {

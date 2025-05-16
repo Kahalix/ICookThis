@@ -72,7 +72,6 @@ namespace ICookThis.Modules.Recipes.Repositories
                     break;
             }
 
-            // 3) paginacja
             var total = await query.CountAsync();
             var items = await query
                 .Skip((page - 1) * pageSize)
@@ -132,8 +131,6 @@ namespace ICookThis.Modules.Recipes.Repositories
 
             return (items, total);
         }
-
-
 
         public Task<IEnumerable<Recipe>> GetAllAsync() =>
             Task.FromResult<IEnumerable<Recipe>>(_db.Recipes);
