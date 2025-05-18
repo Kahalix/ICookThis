@@ -73,6 +73,9 @@ string replaced = PlaceholderReplacer.Replace(
 );
 ```
 // → "150 g sugar"
+
+---
+
 📨 Email Notification Flow
 All emails use EmailTemplateBuilder.Wrap(title, innerHtml) for consistent branding:
 
@@ -89,6 +92,8 @@ Recipe created / status changed
 Review created / status changed
 
 Each builder method returns (Subject, BodyHtml) and is sent via MailService (MailKit + config).
+
+---
 
 📊 Database Design
 Entity-Relationship diagram:
