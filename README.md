@@ -52,6 +52,8 @@ ICookThis is a ASP .NET Core Vue.js Web App, featuring:
 
 ## 🖼 Static Assets  
 All user-uploaded images and generated pictures are served from **wwwroot** subfolders:
+
+```
 wwwroot/
 ├─ images/
 │ ├─ recipes/
@@ -59,6 +61,7 @@ wwwroot/
 │ └─ users/
 │ ├─ profiles/
 │ └─ banners/
+```
 
 ---
 
