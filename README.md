@@ -59,8 +59,8 @@ wwwroot/
 │ ├─ recipes/
 │ ├─ instructionsteps/
 │ └─ users/
-│ ├─ profiles/
-│ └─ banners/
+│   ├─ profiles/
+│   └─ banners/
 ```
 
 ---
