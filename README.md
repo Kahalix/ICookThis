@@ -71,6 +71,7 @@ string replaced = PlaceholderReplacer.Replace(
     template: "Add {Sugar}.", 
     recipeIngredients, stepIngredients, scale: 1.5m
 );
+```
 // → "150 g sugar"
 📨 Email Notification Flow
 All emails use EmailTemplateBuilder.Wrap(title, innerHtml) for consistent branding:
