@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.github.com/Kahalix/ICookThis/docs/logo/logo.jpg" alt="ICookThis Logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/Kahalix/ICookThis/main/docs/logo.png" alt="ICookThis Logo" width="200"/>
 </p>
 
 # ICookThis ⋅ ASP .NET Core REST API with Vue.js  
