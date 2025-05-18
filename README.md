@@ -3,8 +3,7 @@
 </p>
 
 # ICookThis ⋅ ASP .NET Core REST API with Vue.js  
-> A modular cooking platform: users, recipes, reviews & votes.
-
+> iCookThis is a recipe-sharing web app where users can post, review, and vote on recipes. It features automatic calculation of recipe stats and reviewer trust levels based on community feedback. Built with Vue.js and ASP.NET Core, Entity Framework and MSSQL.
 ---
 
 ## 📖 Project Overview  
