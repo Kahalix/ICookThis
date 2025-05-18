@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Kahalix/ICookThis/docs/logo/logo.png" alt="ICookThis Logo" width="200"/>
+  <img src="https://raw.githubusercontent.com/Kahalix/ICookThis/docs/logo/logo.jpg" alt="ICookThis Logo" width="200"/>
 </p>
 
 # ICookThis ⋅ ASP .NET Core REST API with Vue.js  
@@ -100,4 +100,6 @@ Entity-Relationship diagram:
 
 ![image](https://github.com/user-attachments/assets/cc90e1c4-0a82-481a-9a6e-0aee08d6b77a)
 
-Project structure, ER diagrams, sequence diagrams and full API spec are in the docs/ folder.
+---
+
+Project documents including ER diagrams, sequence diagrams and full API spec will be/are in the docs/ folder.
