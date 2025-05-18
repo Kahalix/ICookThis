@@ -75,7 +75,7 @@ string replaced = PlaceholderReplacer.Replace(
     recipeIngredients, stepIngredients, scale: 1.5m
 );
 ```
-// → "150 g sugar"
+// → "Add 150 g sugar"
 
 ---
 
