@@ -8,7 +8,7 @@
 ---
 
 ## 📖 Project Overview  
-ICookThis is a cleanly layered ASP .NET Core Web API, featuring:
+ICookThis is a ASP .NET Core Vue.js Web App, featuring:
 - **Authentication & Authorization**: email confirmation, password reset tokens.
 - **User Management**: roles (Admin/Moderator/User), status (Pending/Approved/Suspended/Deleted), profile images.
 - **Recipes**: create, read, update, search, filter; ingredients, units, instruction steps.
